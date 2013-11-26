@@ -43,6 +43,7 @@
                   magit
                   markdown-mode
                   nginx-mode
+                  page-break-lines
                   php-mode
                   popup
                   projectile
@@ -442,6 +443,10 @@
           (propertize (number-to-string line) 'face 'linum))))
 
      (setq linum-format 'linum-format-func)))
+
+;; == Page break lines
+
+(global-page-break-lines-mode)
 
 ;; == Automated customizations
 
