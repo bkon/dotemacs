@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: member var declaration
+# key: var
+# expand-env: ((yas/indent-line 'fixed))
+# --
+    /**
+     * @var $1
+     */
+    private $_$2;
+$0

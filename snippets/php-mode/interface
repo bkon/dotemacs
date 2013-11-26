@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: PHP interface definition
+# key: interface
+# --
+interface $1
+{
+    function $2($3);
+}
+$0

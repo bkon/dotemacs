@@ -1,0 +1,8 @@
+.emacs.desktop*
+auto-save-list
+bookmarks
+el-get
+elpa
+session.*
+tramp
+eshell

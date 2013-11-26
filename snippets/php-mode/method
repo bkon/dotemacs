@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: PHP class method
+# key: method
+# expand-env: ((yas/indent-line 'fixed) )
+# --
+    /**
+     *
+     */
+    ${1:$$(yas-choose-value '("public " "protected " "private ")) }function ${2:foobar}($3)
+    {
+        $0
+    }

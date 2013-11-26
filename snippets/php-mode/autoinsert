@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: PHP default file header
+# key: <?php
+# expand-env: ((yas/indent-line 'fixed) )
+# --
+<?php
+/**
+ * @author Konstantin Burnaev <kbourn@gmail.com>
+ * @copyright Copyright (c) 2013, Konstantin Burnaev
+ * @license http://opensource.org/licenses/MIT MIT
+ */
+
+$0

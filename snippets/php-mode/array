@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: PHP array
+# key: arr
+# --
+array(
+    $0
+)

@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: PHP class definition
+# key: class
+# --
+class $1${2: extends $3}${4: implements $5}
+{
+    function __construct($6)
+    {
+        $0
+    }
+}

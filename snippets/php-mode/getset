@@ -1,0 +1,24 @@
+# -*- mode: snippet -*-
+# name: getter + setter method pair
+# key: getset
+# expand-env: ((yas/indent-line 'fixed))
+# --
+    /**
+     * @return $1
+     */
+    public function get${2:Foo}()
+    {
+        return $this->_${2:$(uncapitalize yas/text)};
+    }
+
+    /**
+     * @param $1 $value
+     * @return $3
+     */
+    public function set$2($value)
+    {
+        $this->_${2:$(uncapitalize yas/text)} = $value;
+        return $this;
+    }
+
+$0
