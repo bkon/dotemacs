@@ -15,6 +15,7 @@
                   csv-mode
                   cursor-chg
                   dired+
+                  diminish
                   feature-mode
                   fill-column-indicator
                   flymake-coffee
@@ -447,6 +448,12 @@
 ;; == Page break lines
 
 (global-page-break-lines-mode)
+
+;; == Diminish
+
+(diminish 'page-break-lines-mode)
+(diminish 'git-gutter+-mode)
+(diminish 'yas-minor-mode)
 
 ;; == Automated customizations
 
