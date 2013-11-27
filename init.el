@@ -131,6 +131,9 @@
 ;; Recent files
 (recentf-mode 1)
 
+;; Use simple y/n prompt
+(fset 'yes-or-no-p 'y-or-n-p)
+
 ;; == Session management
 
 ;; revive hooks for automatically saving and restoring window configuration
