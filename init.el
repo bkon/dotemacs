@@ -58,6 +58,8 @@
                   smart-operator
                   sql-indent
                   syslog-mode
+                  visual-regexp
+                  visual-regexp-steroids
                   yaml-mode
                   yasnippet
                   zenburn-theme
@@ -391,6 +393,13 @@
 
 ;; Enable GitGutter by default
 (global-git-gutter+-mode)
+
+;; == Visual regexp steroids
+
+(define-key global-map (kbd "C-c r") 'vr/replace)
+(define-key global-map (kbd "C-c q") 'vr/query-replace)
+(define-key esc-map (kbd "C-M-r") 'vr/isearch-backward)
+(define-key esc-map (kbd "C-M-s") 'vr/isearch-forward)
 
 ;; == Magit
 
