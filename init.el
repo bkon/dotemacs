@@ -6,7 +6,8 @@
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
-(let ((packages '(bookmark+
+(let ((packages '(anzu
+                  bookmark+
                   browse-kill-ring
                   bundler
                   butler
@@ -370,6 +371,10 @@
 
 (add-hook 'yaml-mode-hook 'flymake-yaml-load)
 
+;; == Anzu
+
+(global-anzu-mode +1)
+
 ;; == GutGutter+
 
 (eval-after-load 'git-gutter+
@@ -463,6 +468,7 @@
 (diminish 'page-break-lines-mode)
 (diminish 'git-gutter+-mode)
 (diminish 'yas-minor-mode)
+(diminish 'anzu-mode)
 
 ;; == Automated customizations
 
