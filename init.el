@@ -49,6 +49,7 @@
                   php-mode
                   popup
                   popwin
+                  powerline
                   projectile
                   puppet-mode
                   rainbow-mode
@@ -480,6 +481,12 @@
 
 (require 'popwin)
 (popwin-mode 1)
+
+;; == Powerline
+
+(require 'powerline)
+(setq-default powerline-arrow-shape 'slant)
+(powerline-default-theme)
 
 ;; == Automated customizations
 
