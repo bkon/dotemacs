@@ -9,6 +9,8 @@
 (package-initialize)
 
 (let ((packages '(anzu
+                  auto-complete
+                  auto-complete-nxml
                   bookmark+
                   browse-kill-ring
                   bundler
@@ -309,6 +311,10 @@
 
 (add-hook 'json-mode 'flymake-json-load)
 
+;; ==== NXML
+
+(setq nxml-slash-auto-complete-flag t)
+
 ;; ==== PHP
 
 (define-auto-insert
@@ -385,6 +391,13 @@
 ;; == Anzu
 
 (global-anzu-mode +1)
+
+;; == Autocomplete
+
+(require 'auto-complete)
+(global-auto-complete-mode 1)
+
+(require 'auto-complete-nxml)
 
 ;; == Dired
 

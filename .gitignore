@@ -6,3 +6,4 @@ elpa
 session.*
 tramp
 eshell
+/ac-comphist.dat
