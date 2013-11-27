@@ -36,6 +36,7 @@
                   flymake-sass
                   flymake-shell
                   flymake-yaml
+                  flyspell-lazy
                   frame-restore
                   gist
                   git-gutter+
@@ -385,6 +386,16 @@
 
 (global-anzu-mode +1)
 
+;; == Flyspell
+
+(add-hook 'text-mode-hook 'flyspell-mode)
+(add-hook 'prog-mode-hook 'flyspell-prog-mode)
+
+(setq-default
+     ispell-program-name "aspell"
+     ispell-list-command "--list"
+     ispell-extra-args '("--sug-mode=ultra"))
+
 ;; == GutGutter+
 
 (eval-after-load 'git-gutter+
@@ -479,6 +490,7 @@
 (diminish 'git-gutter+-mode)
 (diminish 'yas-minor-mode)
 (diminish 'anzu-mode)
+(diminish 'flyspell-mode)
 
 ;; == expand-region
 
