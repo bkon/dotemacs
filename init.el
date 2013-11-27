@@ -315,6 +315,11 @@
 
 (setq nxml-slash-auto-complete-flag t)
 
+(setq magic-mode-alist
+      (cons '("<＼＼?xml " . nxml-mode)
+            magic-mode-alist))
+(fset 'xml-mode 'nxml-mode)
+
 ;; ==== PHP
 
 (define-auto-insert
