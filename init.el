@@ -386,6 +386,16 @@
 
 (global-anzu-mode +1)
 
+;; == Dired
+
+(setq-default
+ ;; Always copy recursively without asking.
+ dired-recursive-copies 'always
+ ;; Ask once when recursively deleting a directory.
+ dired-recursive-deletes 'top
+ ;; Allow dired to be smart about operations.
+ dired-dwim-target t)
+
 ;; == Flyspell
 
 (require 'flyspell)
