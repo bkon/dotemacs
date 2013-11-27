@@ -67,6 +67,7 @@
                   rainbow-delimiters
                   rainbow-mode
                   revive
+                  robe
                   rspec-mode
                   sass-mode
                   scss-mode
@@ -409,6 +410,18 @@
 (add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
 
 (add-hook 'ruby-mode-hook 'flymake-ruby-load)
+
+;; required gems: pry, pry-doc, method_source
+(require 'robe)
+(add-hook 'ruby-mode-hook 'robe-mode)
+(add-hook 'ruby-mode-hook 'eldoc-mode)
+(add-hook 'ruby-mode-hook
+          (lambda ()
+            (setq ac-sources (cons 'ac-source-robe ac-sources))
+            ))
+
+
+;; (set-auto-complete-as-completion-at-point-function)
 
 ;; ==== SASS
 
