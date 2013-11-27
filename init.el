@@ -48,6 +48,7 @@
                   page-break-lines
                   php-mode
                   popup
+                  popwin
                   projectile
                   puppet-mode
                   rainbow-mode
@@ -472,6 +473,13 @@
 (diminish 'git-gutter+-mode)
 (diminish 'yas-minor-mode)
 (diminish 'anzu-mode)
+
+;; == Popwin
+
+;; Makes temporary buffers "popup" windows which can be closed by pressing C-g
+
+(require 'popwin)
+(popwin-mode 1)
 
 ;; == Automated customizations
 
