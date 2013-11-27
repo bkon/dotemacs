@@ -42,6 +42,7 @@
                   git-gutter-fringe+
                   graphviz-dot-mode
                   haml-mode
+                  helm
                   icicles
                   js2-mode
                   js2-refactor
@@ -419,6 +420,10 @@
 ;; Enable GitGutter by default
 (global-git-gutter+-mode)
 
+;; == Helm
+
+(helm-mode)
+
 ;; == Visual regexp steroids
 
 (define-key global-map (kbd "C-c r") 'vr/replace)
@@ -490,6 +495,7 @@
 (diminish 'yas-minor-mode)
 (diminish 'anzu-mode)
 (diminish 'flyspell-mode)
+(diminish 'helm-mode)
 
 ;; == expand-region
 
