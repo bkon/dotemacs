@@ -637,6 +637,8 @@
 (diminish 'anzu-mode)
 (diminish 'flyspell-mode)
 (diminish 'helm-mode)
+(diminish 'robe-mode)
+(diminish 'auto-fill-function)
 
 (require 'flymake)
 (diminish 'flymake-mode)
