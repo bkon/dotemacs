@@ -48,6 +48,7 @@
                   graphviz-dot-mode
                   haml-mode
                   helm
+                  helm-projectile
                   icicles
                   js2-mode
                   js2-refactor
@@ -480,6 +481,11 @@
 ;; == Helm
 
 (helm-mode)
+;; (global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-x a b") 'helm-buffers-list)
+(require 'helm-projectile)
+(global-set-key (kbd "C-x a f") 'helm-projectile)
+
 ;; == MMM
 
 (require 'mmm-mode)
