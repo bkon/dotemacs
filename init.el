@@ -19,6 +19,7 @@
                   cursor-chg
                   dired+
                   diminish
+                  dtrt-indent
                   expand-region
                   feature-mode
                   fill-column-indicator
@@ -315,6 +316,7 @@
    autoinsert-yas-expand])
 
 (add-hook 'php-mode-hook 'flymake-php-load)
+(add-hook 'php-mode-hook 'dtrt-indent-mode)
 
 ;; enable fill column indicator
 ;;
