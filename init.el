@@ -38,6 +38,7 @@
                   flymake-sass
                   flymake-shell
                   flymake-yaml
+                  flyspell-lazy
                   frame-restore
                   gist
                   git-gutter+
@@ -425,6 +426,8 @@
      ispell-program-name "aspell"
      ispell-list-command "--list"
      ispell-extra-args '("--sug-mode=ultra"))
+
+(flyspell-lazy-mode)
 
 ;; == GutGutter+
 
