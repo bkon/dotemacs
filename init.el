@@ -17,6 +17,7 @@
                   cursor-chg
                   dired+
                   diminish
+                  expand-region
                   feature-mode
                   fill-column-indicator
                   flymake-coffee
@@ -474,6 +475,10 @@
 (diminish 'git-gutter+-mode)
 (diminish 'yas-minor-mode)
 (diminish 'anzu-mode)
+
+;; == expand-region
+
+(global-set-key (kbd "C-=") 'er/expand-region)
 
 ;; == Popwin
 
