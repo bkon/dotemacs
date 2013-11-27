@@ -304,7 +304,10 @@
 
 (add-hook 'css-mode-hook 'flymake-css-load)
 (add-hook 'css-mode-hook
-          '(lambda () (rainbow-mode 1)))
+          '(lambda ()
+             (rainbow-mode 1)
+             (ac-css-mode-setup)
+             ))
 
 ;; ==== CSV
 
