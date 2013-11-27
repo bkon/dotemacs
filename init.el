@@ -63,6 +63,7 @@
                   powerline
                   projectile
                   puppet-mode
+                  rainbow-delimiters
                   rainbow-mode
                   revive
                   rspec-mode
@@ -285,6 +286,12 @@
 (auto-insert-mode)
 
 ;; == Modes
+
+(add-hook 'prog-mode-hook
+          (lambda ()
+            (auto-fill-mode 1)
+            (rainbow-delimiters-mode 1)
+            ))
 
 ;; ==== CoffeeScript
 
