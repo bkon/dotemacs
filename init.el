@@ -24,6 +24,7 @@
                   dtrt-indent
                   expand-region
                   feature-mode
+                  fic-mode
                   fill-column-indicator
                   flymake-coffee
                   flymake-css
@@ -415,6 +416,12 @@
  dired-recursive-deletes 'top
  ;; Allow dired to be smart about operations.
  dired-dwim-target t)
+
+;; == Fic mode
+
+(require 'fic-mode)
+(add-hook 'prog-mode-hook
+          (lambda () "DOCSTRING" (interactive) (fic-mode 1)))
 
 ;; == Flyspell
 
