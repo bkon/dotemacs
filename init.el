@@ -18,6 +18,7 @@
                   coffee-mode
                   col-highlight
                   csv-mode
+                  csv-nav
                   cursor-chg
                   dired+
                   diminish
@@ -296,6 +297,10 @@
 (add-hook 'css-mode-hook 'flymake-css-load)
 (add-hook 'css-mode-hook
           '(lambda () (rainbow-mode 1)))
+
+;; ==== CSV
+
+(setq-default csv-separators '("," ";" "|" " "))
 
 ;; ==== Haml
 
