@@ -427,6 +427,7 @@
      ispell-list-command "--list"
      ispell-extra-args '("--sug-mode=ultra"))
 
+;; without this auto-complete lags
 (flyspell-lazy-mode)
 
 ;; == GutGutter+
