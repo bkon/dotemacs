@@ -498,6 +498,11 @@
 (diminish 'flyspell-mode)
 (diminish 'helm-mode)
 
+(require 'flymake)
+(diminish 'flymake-mode)
+
+(diminish 'abbrev-mode)
+
 ;; == expand-region
 
 (global-set-key (kbd "C-=") 'er/expand-region)
