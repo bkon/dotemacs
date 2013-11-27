@@ -36,7 +36,6 @@
                   flymake-sass
                   flymake-shell
                   flymake-yaml
-                  flyspell-lazy
                   frame-restore
                   gist
                   git-gutter+
