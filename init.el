@@ -654,6 +654,9 @@
 (diminish 'helm-mode)
 (diminish 'robe-mode)
 (diminish 'auto-fill-function)
+(diminish 'projectile-mode)
+(diminish 'fic-mode)
+(diminish 'auto-complete-mode)
 
 (require 'flymake)
 (diminish 'flymake-mode)
