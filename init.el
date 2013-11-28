@@ -50,10 +50,10 @@
                   graphviz-dot-mode
                   haml-mode
                   helm
-                  heml-css-scss
+                  helm-css-scss
                   helm-flymake
-                  heml-git-grep
-                  heml-rails
+                  helm-git-grep
+                  helm-rails
                   helm-projectile
                   icicles
                   js2-mode
@@ -512,11 +512,16 @@
 
 ;; == Helm
 
+(require 'helm-projectile)
+
 (helm-mode)
 ;; (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-x a b") 'helm-buffers-list)
-(require 'helm-projectile)
 (global-set-key (kbd "C-x a f") 'helm-projectile)
+(global-set-key (kbd "C-x a c") 'helm-css-scss)
+(global-set-key (kbd "C-x a m") 'helm-flymake)
+(global-set-key (kbd "C-x a g") 'helm-git-grep)
+(global-set-key (kbd "C-x a r") 'helm-rails)
 
 ;; == Projectile
 
