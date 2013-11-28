@@ -512,6 +512,10 @@
 (require 'helm-projectile)
 (global-set-key (kbd "C-x a f") 'helm-projectile)
 
+;; == Projectile
+
+(projectile-global-mode)
+
 ;; == MMM
 
 (require 'mmm-mode)
