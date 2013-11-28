@@ -9,6 +9,8 @@
 (package-initialize)
 
 (let ((packages '(anzu
+                  ac-ispell
+                  ac-js2
                   auto-complete
                   auto-complete-nxml
                   bookmark+
@@ -48,6 +50,10 @@
                   graphviz-dot-mode
                   haml-mode
                   helm
+                  heml-css-scss
+                  helm-flymake
+                  heml-git-grep
+                  heml-rails
                   helm-projectile
                   icicles
                   js2-mode
