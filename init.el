@@ -297,7 +297,6 @@
 
 (add-hook 'prog-mode-hook
           (lambda ()
-            (auto-fill-mode 1)
             (rainbow-delimiters-mode 1)
             ))
 
