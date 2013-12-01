@@ -627,9 +627,11 @@
      ;; Pad line number with zeros using :linum-leading-zero face
      (defun linum-format-func (line)
        (let ((w
-              (1+
-               (length
-                (number-to-string (count-lines (point-min) (point-max)))))))
+              (max
+               4
+               (1+
+                (length
+                 (number-to-string (count-lines (point-min) (point-max))))))))
          (concat
           ;; leading zeros
           (propertize (make-string (- w (length (number-to-string line))) ?0)
