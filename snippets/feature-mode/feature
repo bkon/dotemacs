@@ -1,0 +1,18 @@
+# -*- mode: snippet -*-
+# name: feature
+# key: feature
+# expand-env: ((yas/indent-line 'fixed))
+# --
+Feature: ${1:feature description}
+
+  In order to ${2:do something}
+  As a ${3:some actor}
+  I want ${4:some functionality to be available}
+
+  Background: ${5:no specific background}
+
+    Given ${6:...}
+
+  Scenario: ${7:scenario name}
+
+    Given ${8:...}

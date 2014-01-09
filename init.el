@@ -55,7 +55,6 @@
                   helm-git-grep
                   helm-rails
                   helm-projectile
-                  icicles
                   js2-mode
                   js2-refactor
                   json-mode
@@ -122,9 +121,6 @@
 
 ;; Delete trailing whitespace when file is saved
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-;; Icicles (http://www.emacswiki.org/emacs/Icicles)
-(icy-mode 1)
 
 ;; Disable backups
 (setq backup-inhibited t)
@@ -425,7 +421,6 @@
             (setq ac-sources (cons 'ac-source-robe ac-sources))
             ))
 
-
 ;; (set-auto-complete-as-completion-at-point-function)
 
 ;; ==== SASS
@@ -435,6 +430,11 @@
 ;; ==== SCSS
 
 (add-hook 'scss-mode-hook 'flymake-sass-load)
+(add-hook 'scss-mode-hook
+          (lambda ()
+            (setq scss-compile-on-save nil)
+            ))
+
 
 ;; ==== Shell
 
@@ -447,6 +447,7 @@
 ;; == Anzu
 
 (global-anzu-mode +1)
+(global-set-key (kbd "M-%") 'anzu-query-replace)
 
 ;; == Autocomplete
 
