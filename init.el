@@ -401,13 +401,12 @@
 
 ;; ==== Ruby
 
-;; Recognize Guardfile as Ruby file
+;; Recognize several Ruby/RoR/related tool files as Ruby fiels
 (add-to-list 'auto-mode-alist '("Guardfile" . ruby-mode))
-
-;; Recognize Gemfile as Ruby file
+(add-to-list 'auto-mode-alist '("Vagrantfile" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Cheffile" . ruby-mode))
+(add-to-list 'auto-mode-alist '(".*\\.cap" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
-
-;; Recognize *.gemspec as Ruby file
 (add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
 
 (add-hook 'ruby-mode-hook 'flymake-ruby-load)
@@ -434,7 +433,6 @@
           (lambda ()
             (setq scss-compile-on-save nil)
             ))
-
 
 ;; ==== Shell
 
