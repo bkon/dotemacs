@@ -444,10 +444,11 @@
 
 ;; ==== SCSS
 
-(add-hook 'scss-mode-hook 'flymake-sass-load)
 (add-hook 'scss-mode-hook
           (lambda ()
-            (setq scss-compile-on-save nil)
+            (setq scss-compile-at-save nil)
+            (flymake-sass-load)
+            (linum-mode)
             ))
 
 ;; ==== Shell
