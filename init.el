@@ -336,6 +336,7 @@
 (add-hook 'haml-mode-hook 'flymake-haml-load)
 
 ;; ==== HTML/SGML
+
 (add-hook 'sgml-mode-hook 'zencoding-mode)
 (add-hook 'nxml-mode-hook 'zencoding-mode)
 
