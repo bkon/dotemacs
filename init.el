@@ -47,6 +47,7 @@
                   gist
                   git-gutter+
                   git-gutter-fringe+
+                  git-messenger
                   graphviz-dot-mode
                   haml-mode
                   helm
@@ -605,6 +606,11 @@
 ;; == Magit
 
 (setq-default magit-diff-refine-hunk t)
+
+;; == Git messenger
+
+(setq git-messenger:show-detail t)
+(global-set-key (kbd "C-x v p") 'git-messenger:popup-message)
 
 ;; == Line numbers
 
