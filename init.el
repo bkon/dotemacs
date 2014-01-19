@@ -322,6 +322,7 @@
 ;; ==== CSS
 
 (add-hook 'css-mode-hook 'flymake-css-load)
+(add-hook 'css-mode-hook 'linum-mode)
 (add-hook 'css-mode-hook
           '(lambda ()
              (rainbow-mode 1)
