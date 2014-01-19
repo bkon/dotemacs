@@ -55,6 +55,7 @@
                   helm-flymake
                   helm-git-grep
                   helm-projectile
+                  helm-swoop
                   js2-mode
                   js2-refactor
                   json-mode
