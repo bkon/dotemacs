@@ -533,6 +533,7 @@
 ;; == Helm
 
 (require 'helm-projectile)
+(require 'helm-rails)
 
 (helm-mode)
 ;; (global-set-key (kbd "C-x C-f") 'helm-find-files)
@@ -541,7 +542,12 @@
 (global-set-key (kbd "C-x a c") 'helm-css-scss)
 (global-set-key (kbd "C-x a m") 'helm-flymake)
 (global-set-key (kbd "C-x a g") 'helm-git-grep)
-(global-set-key (kbd "C-x a r") 'helm-rails)
+
+(global-set-key (kbd "C-x a r c") 'helm-rails-controllers)
+(global-set-key (kbd "C-x a r m") 'helm-rails-models)
+(global-set-key (kbd "C-x a r v") 'helm-rails-views)
+(global-set-key (kbd "C-x a r s") 'helm-rails-specs)
+(global-set-key (kbd "C-x a r a") 'helm-rails-all)
 
 ;; == Projectile
 
