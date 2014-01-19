@@ -1,3 +1,4 @@
+*.bak
 .emacs.desktop*
 auto-save-list
 bookmarks
