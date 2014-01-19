@@ -54,7 +54,6 @@
                   helm-css-scss
                   helm-flymake
                   helm-git-grep
-                  helm-rails
                   helm-projectile
                   js2-mode
                   js2-refactor
@@ -73,6 +72,7 @@
                   rainbow-delimiters
                   rainbow-mode
                   revive
+                  rinari
                   robe
                   rspec-mode
                   sass-mode
@@ -445,6 +445,8 @@
 
 ;; (set-auto-complete-as-completion-at-point-function)
 
+(global-rinari-mode)
+
 ;; ==== SASS
 
 (add-hook 'sass-mode-hook 'flymake-sass-load)
@@ -533,21 +535,15 @@
 ;; == Helm
 
 (require 'helm-projectile)
-(require 'helm-rails)
 
 (helm-mode)
-;; (global-set-key (kbd "C-x C-f") 'helm-find-files)
+
 (global-set-key (kbd "C-x a b") 'helm-buffers-list)
 (global-set-key (kbd "C-x a f") 'helm-projectile)
 (global-set-key (kbd "C-x a c") 'helm-css-scss)
 (global-set-key (kbd "C-x a m") 'helm-flymake)
 (global-set-key (kbd "C-x a g") 'helm-git-grep)
 
-(global-set-key (kbd "C-x a r c") 'helm-rails-controllers)
-(global-set-key (kbd "C-x a r m") 'helm-rails-models)
-(global-set-key (kbd "C-x a r v") 'helm-rails-views)
-(global-set-key (kbd "C-x a r s") 'helm-rails-specs)
-(global-set-key (kbd "C-x a r a") 'helm-rails-all)
 
 ;; == Projectile
 
