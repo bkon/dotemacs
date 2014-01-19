@@ -340,7 +340,6 @@
 ;; ==== HTML/SGML
 
 (add-hook 'sgml-mode-hook 'zencoding-mode)
-(add-hook 'nxml-mode-hook 'zencoding-mode)
 
 ;; ==== JS
 
@@ -371,7 +370,13 @@
 (setq magic-mode-alist
       (cons '("<＼＼?xml " . nxml-mode)
             magic-mode-alist))
+
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . nxml-mode))
+
 (fset 'xml-mode 'nxml-mode)
+
+(add-hook 'nxml-mode-hook 'zencoding-mode)
+(add-hook 'nxml-mode-hook 'linum-mode)
 
 ;; ==== PHP
 
