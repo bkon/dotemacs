@@ -544,6 +544,8 @@
 (global-set-key (kbd "C-x a m") 'helm-flymake)
 (global-set-key (kbd "C-x a g") 'helm-git-grep)
 
+;; Disable autoexpansion in find-files by default
+(setq helm-ff-auto-update-initial-value nil)
 
 ;; == Projectile
 
