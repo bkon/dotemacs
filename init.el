@@ -616,6 +616,7 @@
 ;; == Magit
 
 (setq-default magit-diff-refine-hunk t)
+(setq-default magit-status-buffer-switch-function 'switch-to-buffer)
 
 ;; == Git messenger
 
