@@ -537,6 +537,16 @@
 ;; Enable GitGutter by default
 (global-git-gutter+-mode)
 
+;; == Bookmark+
+;;
+;; C-x r l - list bookmarks
+;; C-x r m - add bookmark
+;; C-x j j - jump to bookmark
+;;
+;;
+
+(require 'bookmark+)
+
 ;; == Helm
 
 (require 'helm-projectile)
