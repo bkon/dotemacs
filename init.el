@@ -56,6 +56,7 @@
                   helm-git-grep
                   helm-projectile
                   helm-swoop
+                  highlight-indentation
                   js2-mode
                   js2-refactor
                   json-mode
@@ -311,6 +312,7 @@
 (add-hook 'prog-mode-hook
           (lambda ()
             (rainbow-delimiters-mode 1)
+            (highlight-indentation-current-column-mode 1)
             ))
 
 ;; ==== CoffeeScript
