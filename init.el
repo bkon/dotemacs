@@ -547,6 +547,7 @@
 (global-set-key (kbd "C-x a c") 'helm-css-scss)
 (global-set-key (kbd "C-x a m") 'helm-flymake)
 (global-set-key (kbd "C-x a g") 'helm-git-grep)
+(global-set-key (kbd "C-x a s") 'helm-swoop)
 
 ;; Disable autoexpansion in find-files by default
 (setq helm-ff-auto-update-initial-value nil)
