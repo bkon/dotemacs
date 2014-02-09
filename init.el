@@ -376,6 +376,7 @@
             magic-mode-alist))
 
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . nxml-mode))
+(add-to-list 'auto-mode-alist '("\\.html\\'" . nxml-mode))
 
 (fset 'xml-mode 'nxml-mode)
 
