@@ -86,6 +86,7 @@
                   visual-regexp
                   visual-regexp-steroids
                   yaml-mode
+                  yard-mode
                   yasnippet
                   zenburn-theme
                   zencoding-mode)))
