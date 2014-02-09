@@ -552,6 +552,8 @@
 ;; Disable autoexpansion in find-files by default
 (setq helm-ff-auto-update-initial-value nil)
 
+(global-set-key (kbd "M-x") 'helm-M-x)
+
 ;; == Projectile
 
 (projectile-global-mode)
