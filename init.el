@@ -20,13 +20,13 @@
              '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
-(let ((packages '(anzu
+(let ((packages '(
+                  anzu
                   ac-ispell
                   ac-js2
                   auto-complete
                   auto-complete-nxml
                   bookmark+ ;; todo
-                  browse-kill-ring
                   bundler
                   butler
                   coffee-mode
@@ -54,7 +54,7 @@
                   flyspell-lazy
                   frame-restore
                   fuzzy
-                  gist
+                  gist ;; todo
                   git-gutter+
                   git-gutter-fringe+
                   git-messenger
@@ -68,8 +68,8 @@
                   helm-swoop
                   highlight-indentation
                   js2-mode
-                  js2-refactor
-                  json-mode
+                  js2-refactor ;; todo
+                  json-mode ;; todo
                   magit
                   markdown-mode
                   mmm-mode
@@ -89,6 +89,7 @@
                   rspec-mode
                   sass-mode
                   scss-mode
+                  simple-call-tree
                   smart-mode-line
                   smart-operator
                   sql-indent
@@ -100,7 +101,8 @@
                   yard-mode
                   yasnippet
                   zenburn-theme
-                  zencoding-mode)))
+                  zencoding-mode
+                  )))
 
   (unless (every #'package-installed-p packages)
     (message "%s" "Refreshing package database...")
@@ -322,7 +324,6 @@
 (add-hook 'prog-mode-hook
           (lambda ()
             (rainbow-delimiters-mode 1)
-            (highlight-indentation-current-column-mode 1)
             ))
 
 ;; ==== CSS
@@ -354,10 +355,6 @@
               js2-show-parse-errors nil
               js2-strict-missing-semi-warning nil)
 
-;; ==== JSON
-
-(add-hook 'json-mode 'flymake-json-load)
-
 ;; ==== NXML
 
 (setq nxml-slash-auto-complete-flag t)
@@ -380,8 +377,6 @@
   '(php-mode . "Basic PHP header")
   ['(nil "<?php")
    autoinsert-yas-expand])
-
-(add-hook 'php-mode-hook 'flymake-php-load)
 
 ;; indent multiline function parameter lists using a single
 ;; indent, e.g.:
@@ -415,8 +410,6 @@
 (add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
 
-(add-hook 'ruby-mode-hook 'flymake-ruby-load)
-
 ;; required gems: pry, pry-doc, method_source
 (require 'robe)
 (add-hook 'ruby-mode-hook 'robe-mode)
@@ -430,26 +423,15 @@
 
 (global-rinari-mode)
 
-;; ==== SASS
-
-(add-hook 'sass-mode-hook 'flymake-sass-load)
 
 ;; ==== SCSS
 
 (add-hook 'scss-mode-hook
           (lambda ()
             (setq scss-compile-at-save nil)
-            (flymake-sass-load)
             (linum-mode)
             ))
 
-;; ==== Shell
-
-(add-hook 'sh-set-shell-hook 'flymake-shell-load)
-
-;; ==== YAML
-
-(add-hook 'yaml-mode-hook 'flymake-yaml-load)
 
 ;; == Flyspell
 
@@ -460,50 +442,10 @@
      ispell-list-command "--list"
      ispell-extra-args '("--sug-mode=ultra"))
 
-;; without this auto-complete lags some
-(flyspell-lazy-mode)
-
-;; == GutGutter+
-
-(eval-after-load 'git-gutter+
-  '(progn
-     (define-key git-gutter+-mode-map (kbd "C-x g n") 'git-gutter+-next-hunk)
-     (define-key git-gutter+-mode-map (kbd "C-x g p") 'git-gutter+-previous-hunk)
-     (define-key git-gutter+-mode-map (kbd "C-x g v") 'git-gutter+-show-hunk)
-     (define-key git-gutter+-mode-map (kbd "C-x g r") 'git-gutter+-revert-hunks)
-     (define-key git-gutter+-mode-map (kbd "C-x g s") 'git-gutter+-stage-hunks)
-     (define-key git-gutter+-mode-map (kbd "C-x g c") 'git-gutter+-commit)
-     (define-key git-gutter+-mode-map (kbd "C-x g C") 'git-gutter+-stage-and-commit)
-
-     ;; Display GitGutter icons in the right fringe
-     (setq-default git-gutter-fr+-side 'right-fringe)
-
-     ;; Enable GitGutter+ fringe mode
-     (require 'git-gutter-fringe+)
-     (git-gutter+-enable-fringe-display-mode)
-     )
-  )
-
-;; Enable GitGutter by default
-(global-git-gutter+-mode)
-
 ;; == Helm
 
 (require 'helm-projectile)
 
-(helm-mode)
-
-(global-set-key (kbd "C-x a b") 'helm-buffers-list)
-(global-set-key (kbd "C-x a f") 'helm-projectile)
-(global-set-key (kbd "C-x a c") 'helm-css-scss)
-(global-set-key (kbd "C-x a m") 'helm-flymake)
-(global-set-key (kbd "C-x a g") 'helm-git-grep)
-(global-set-key (kbd "C-x a s") 'helm-swoop)
-
-;; Disable autoexpansion in find-files by default
-(setq helm-ff-auto-update-initial-value nil)
-
-(global-set-key (kbd "M-x") 'helm-M-x)
 
 ;; == Projectile
 
@@ -573,11 +515,6 @@
 
 (setq-default magit-diff-refine-hunk t)
 (setq-default magit-status-buffer-switch-function 'switch-to-buffer)
-
-;; == Git messenger
-
-(setq git-messenger:show-detail t)
-(global-set-key (kbd "C-x v p") 'git-messenger:popup-message)
 
 ;; == Line numbers
 
@@ -684,7 +621,7 @@
 ;;   s
 ;;   d
 ;;   f
-;;   g
+;;   g - git-gutter+
 ;;   h
 ;;   j
 ;;   k
