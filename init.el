@@ -1,5 +1,17 @@
 (require 'cl)
 
+(defun load-package-config (package)
+  (let ((filename (expand-file-name
+		   (format
+		    "packages/%s.el"
+		    (symbol-name package))
+		   (file-name-directory load-file-name))))
+    (if
+	(file-exists-p filename)
+	(load filename)
+      (display-warning :warning (format "Package configuration file is missing: %s" filename))
+      )))
+
 ;; MELPA package archive
 (require 'package)
 (add-to-list 'package-archives
@@ -13,16 +25,13 @@
                   ac-js2
                   auto-complete
                   auto-complete-nxml
-                  bookmark+
+                  bookmark+ ;; todo
                   browse-kill-ring
                   bundler
                   butler
                   coffee-mode
-                  col-highlight
-                  csv-mode
-                  csv-nav
                   cursor-chg
-                  dired+
+                  dired+ ;; todo
                   diminish
                   dtrt-indent
                   expand-region
@@ -44,6 +53,7 @@
                   flymake-yaml
                   flyspell-lazy
                   frame-restore
+                  fuzzy
                   gist
                   git-gutter+
                   git-gutter-fringe+
@@ -85,6 +95,7 @@
                   syslog-mode
                   visual-regexp
                   visual-regexp-steroids
+                  vline
                   yaml-mode
                   yard-mode
                   yasnippet
@@ -98,7 +109,8 @@
     (mapc #'(lambda (package)
               (unless (package-installed-p package)
                 (package-install package)))
-          packages)))
+          packages))
+  (mapc #'load-package-config packages))
 
 ;; == Paths and tools
 
@@ -120,9 +132,6 @@
 ;; Move between windows using Shift + Arrows
 (windmove-default-keybindings)
 
-;; Kill Ring browsing (M-y displays candidates)
-(browse-kill-ring-default-keybindings)
-
 ;; Hippie expand
 (global-set-key [C-tab] 'hippie-expand)
 
@@ -131,7 +140,7 @@
 
 ;; == Global behavior
 
-;; Enable several advanced features which are diabled by default
+;; Enable several advanced features which are disabled by default
 (put 'narrow-to-region 'disabled nil)
 (put 'set-goal-column 'disabled nil)
 
@@ -316,16 +325,8 @@
             (highlight-indentation-current-column-mode 1)
             ))
 
-;; ==== CoffeeScript
-
-(add-hook 'coffee-mode-hook 'flymake-coffee-load)
-
-;; Default tab width for Coffeescript files
-(setq coffee-tab-width 4)
-
 ;; ==== CSS
 
-(add-hook 'css-mode-hook 'flymake-css-load)
 (add-hook 'css-mode-hook 'linum-mode)
 (add-hook 'css-mode-hook
           '(lambda ()
@@ -333,22 +334,12 @@
              (ac-css-mode-setup)
              ))
 
-;; ==== CSV
-
-(setq-default csv-separators '("," ";" "|" " "))
-
-;; ==== Haml
-
-(add-hook 'haml-mode-hook 'flymake-haml-load)
-
 ;; ==== HTML/SGML
 
 (add-hook 'sgml-mode-hook 'zencoding-mode)
 
 ;; ==== JS
 
-(add-hook 'js-mode-hook 'flymake-jshint-load)
-(add-hook 'js-mode-hook 'flymake-jslint-load)
 (setq-default js2-indent-on-enter-key t
               js2-auto-indent-p t
               js2-bounce-indent-p t
@@ -391,14 +382,6 @@
    autoinsert-yas-expand])
 
 (add-hook 'php-mode-hook 'flymake-php-load)
-(add-hook 'php-mode-hook 'dtrt-indent-mode)
-
-;; enable fill column indicator
-;;
-;; - disabled due Emacs bug
-;; https://github.com/alpaker/Fill-Column-Indicator/issues/31
-;;
-;; (add-hook 'php-mode-hook 'fci-mode)
 
 ;; indent multiline function parameter lists using a single
 ;; indent, e.g.:
@@ -421,11 +404,6 @@
 
 ;; ==== Python
 
-(add-hook 'python-mode-hook
-          (lambda ()
-            (progn
-              (column-highlight-mode 1) ; highlight current column
-              )))
 
 ;; ==== Ruby
 
@@ -473,35 +451,6 @@
 
 (add-hook 'yaml-mode-hook 'flymake-yaml-load)
 
-;; == Anzu
-
-(global-anzu-mode +1)
-(global-set-key (kbd "M-%") 'anzu-query-replace)
-(global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
-
-;; == Autocomplete
-
-(require 'auto-complete)
-(global-auto-complete-mode 1)
-
-(require 'auto-complete-nxml)
-
-;; == Dired
-
-(setq-default
- ;; Always copy recursively without asking.
- dired-recursive-copies 'always
- ;; Ask once when recursively deleting a directory.
- dired-recursive-deletes 'top
- ;; Allow dired to be smart about operations.
- dired-dwim-target t)
-
-;; == Fic mode
-
-(require 'fic-mode)
-(add-hook 'prog-mode-hook
-          (lambda () "DOCSTRING" (interactive) (fic-mode 1)))
-
 ;; == Flyspell
 
 (require 'flyspell)
@@ -511,7 +460,7 @@
      ispell-list-command "--list"
      ispell-extra-args '("--sug-mode=ultra"))
 
-;; without this auto-complete lags
+;; without this auto-complete lags some
 (flyspell-lazy-mode)
 
 ;; == GutGutter+
@@ -537,16 +486,6 @@
 
 ;; Enable GitGutter by default
 (global-git-gutter+-mode)
-
-;; == Bookmark+
-;;
-;; C-x r l - list bookmarks
-;; C-x r m - add bookmark
-;; C-x j j - jump to bookmark
-;;
-;;
-
-(require 'bookmark+)
 
 ;; == Helm
 
@@ -695,28 +634,8 @@
 
 (global-page-break-lines-mode)
 
-;; == Diminish
-
-(diminish 'page-break-lines-mode)
-(diminish 'git-gutter+-mode)
-(diminish 'yas-minor-mode)
-(diminish 'anzu-mode)
-(diminish 'flyspell-mode)
-(diminish 'helm-mode)
-(diminish 'robe-mode)
-(diminish 'auto-fill-function)
-(diminish 'projectile-mode)
-(diminish 'fic-mode)
-(diminish 'auto-complete-mode)
 
 (require 'flymake)
-(diminish 'flymake-mode)
-
-(diminish 'abbrev-mode)
-
-;; == expand-region
-
-(global-set-key (kbd "C-=") 'er/expand-region)
 
 ;; == Popwin
 
@@ -730,6 +649,8 @@
 (require 'powerline)
 (setq-default powerline-arrow-shape 'slant)
 (powerline-default-theme)
+
+(setq tramp-default-method "ssh")
 
 ;; == Automated customizations
 
@@ -754,3 +675,22 @@
  '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
  '(initial-frame-alist (quote ((fullscreen . maximized))))
  '(safe-local-variable-values (quote ((js-indent-level . 2)))))
+
+;; Key prefixes:
+;; C-x
+;;   tab
+;;   qwertyuiop[]\
+;;   a - helm
+;;   s
+;;   d
+;;   f
+;;   g
+;;   h
+;;   j
+;;   k
+;;   l;'
+;;   zx
+;;   c - free (helm command to be moved to a) use for jenkins (*C*I)?
+;;   v - free (vc commands; I use magit)
+;;   b - free (unused buffer nav) use for *b*undler?
+;;   nm,./
