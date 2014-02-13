@@ -1,16 +1,32 @@
 (require 'cl)
 
-(defun load-package-config (package)
+(defun load-config (package base-dir error-message)
   (let ((filename (expand-file-name
 		   (format
-		    "packages/%s.el"
+		    "%s/%s.el"
+                    base-dir
 		    (symbol-name package))
 		   (file-name-directory load-file-name))))
     (if
 	(file-exists-p filename)
 	(load filename)
-      (display-warning :warning (format "Package configuration file is missing: %s" filename))
+      (display-warning :warning (format error-message filename))
       )))
+
+(defun load-package-config (package)
+  (load-config package
+               "packages"
+               "Package configuration file is missing: %s"))
+
+(defun load-major-mode-config (package)
+  (load-config package
+               "major-modes"
+               "Major mode configuration file is missing: %s"))
+
+(defun load-minor-mode-config (package)
+  (load-config package
+               "minor-modes"
+               "Minor mode configuration file is missing: %s"))
 
 ;; MELPA package archive
 (require 'package)
@@ -70,38 +86,38 @@
                   js2-mode
                   js2-refactor ;; todo
                   json-mode ;; todo
-                  magit
-                  markdown-mode
-                  mmm-mode
-                  nginx-mode
+                  magit ;; todo
+                  markdown-mode ;; todo
+                  mmm-mode ;; todo
+                  nginx-mode ;; todo
                   page-break-lines
                   php-mode
                   popup
-                  popwin
-                  powerline
-                  projectile
-                  puppet-mode
+                  popwin ;; todo
+                  powerline ;; todo
+                  projectile ;; todo
+                  puppet-mode ;; todo
                   rainbow-delimiters
                   rainbow-mode
                   revive
-                  rinari
-                  robe
-                  rspec-mode
-                  sass-mode
-                  scss-mode
-                  simple-call-tree
-                  smart-mode-line
-                  smart-operator
-                  sql-indent
-                  syslog-mode
-                  visual-regexp
-                  visual-regexp-steroids
-                  vline
+                  rinari ;; todo
+                  robe ;; todo
+                  rspec-mode ;; todo
+                  sass-mode ;; todo
+                  scss-mode ;; todo
+                  simple-call-tree ;; todo
+                  smart-mode-line ;; todo
+                  smart-operator ;; todo
+                  sql-indent ;; todo
+                  syslog-mode ;; todo
+                  visual-regexp ;; todo
+                  visual-regexp-steroids ;; todo
+                  vline ;; todo
                   yaml-mode
                   yard-mode
-                  yasnippet
+                  yasnippet ;; todo
                   zenburn-theme
-                  zencoding-mode
+                  zencoding-mode ;; todo
                   )))
 
   (unless (every #'package-installed-p packages)
@@ -113,6 +129,34 @@
                 (package-install package)))
           packages))
   (mapc #'load-package-config packages))
+
+(mapc #'load-major-mode-config
+      '(
+        css-mode
+        emacs-lisp-mode
+        eshell-mode
+        html-mode
+        js-mode
+        nxml-mode
+        ruby-mode
+        sh-mode
+        ))
+
+(mapc #'load-minor-mode-config
+      '(
+        auto-insert-mode
+        column-number-mode
+        desktop-save-mode
+        electric-pair-mode
+        hl-line-mode
+        line-number-mode
+        linum-mode
+        recentf-mode
+        size-indication-mode
+        subword-mode
+        which-func-mode
+        whitespace-mode
+        ))
 
 ;; == Paths and tools
 
@@ -176,20 +220,10 @@
       uniquify-after-kill-buffer-p t ; rename after killing
       uniquify-ignore-buffers-re "^\\*")
 
-;; Recent files
-(recentf-mode 1)
-
 ;; Use simple y/n prompt
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; == Session management
-
-;; revive hooks for automatically saving and restoring window configuration
-(add-hook 'kill-emacs-hook 'save-current-configuration)
-(add-hook 'after-init-hook 'resume)
-
-;; Save buffers / locations (desktop)
-(desktop-save-mode 1)
 
 ;; Save buffer position
 (setq-default save-place t)
@@ -208,18 +242,6 @@
 ;; Hide scrollbars
 (scroll-bar-mode -1)
 
-;; Default color theme
-(load-theme 'zenburn t)
-
-;; Enable line number in the status line
-(line-number-mode)
-
-;; Enable column number in the status bar
-(column-number-mode)
-
-;; Enable percentage position display in the status bar
-(size-indication-mode)
-
 ;; Hide left fringe (vertical line along  the side of the frame), keep
 ;; right fringe
 (fringe-mode '(0 . 10))
@@ -237,69 +259,9 @@
 ;; Don't use tabs
 (setq-default indent-tabs-mode nil)
 
-;; Show matching paren
-(show-paren-mode 1)
-
-;; Enable autopairing / smart quotes
-(electric-pair-mode 1)
-
-;; Highlight trailing whitespace
-(setq-default show-trailing-whitespace 1)
-;; ... and don't do that in eshell mode
-(add-hook 'eshell-mode-hook
-          (lambda () (setq show-trailing-whitespace nil)))
-;; ... and don't do that in help mode
-(add-hook 'help-mode-hook
-          (lambda () (setq show-trailing-whitespace nil)))
-
-;; Highlight current line
-(global-hl-line-mode)
-
-;; Show current defun in status bar
-(which-func-mode 1)
-
 ;; Make M-q treat bulleted lists (starting with -*) as paragraphs
-(setq paragraph-start "\f\\|[ \t]*$\\|[-*] +.+$"
-      paragraph-separate "$")
-
-;; Navigate using subwords for CamelCaseIdentifiers
-(global-subword-mode 1)
-
-;; YASnippet is enabled globally
-(yas-global-mode 1)
-
-;; Popup+autocompletion for YASnippet
-
-(require 'popup)
-(defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
-  (when (featurep 'popup)
-    (popup-menu*
-     (mapcar
-      (lambda (choice)
-        (popup-make-item
-         (or (and display-fn (funcall display-fn choice))
-             choice)
-         :value choice))
-      choices)
-     :prompt prompt
-     ;; start isearch mode immediately
-     :isearch t
-     )))
-
-(setq yas-prompt-functions '(yas-popup-isearch-prompt yas-no-prompt))
-
-;; Simple yas helper function
-(defun uncapitalize (str)
-  (concat
-   (downcase (substring str 0 1))
-   (substring str 1)  ))
-
-;; Use yasnippet for file skeletons
-(defun autoinsert-yas-expand()
-  (progn
-    (interactive)
-    (yas-expand)
-    ))
+(setq-default paragraph-start "\f\\|[ \t]*$\\|[-*] +.+$"
+              paragraph-separate "$")
 
 ;; Methods to use when doing hippie expand
 (setq-default hippie-expand-try-functions-list
@@ -315,277 +277,15 @@
                 try-complete-lisp-symbol-partially
                 try-complete-lisp-symbol))
 
-;; File templates
-(setq-default auto-insert-query nil)
-(auto-insert-mode)
-
-;; == Modes
-
-(add-hook 'prog-mode-hook
-          (lambda ()
-            (rainbow-delimiters-mode 1)
-            ))
-
-;; ==== CSS
-
-(add-hook 'css-mode-hook 'linum-mode)
-(add-hook 'css-mode-hook
-          '(lambda ()
-             (rainbow-mode 1)
-             (ac-css-mode-setup)
-             ))
-
-;; ==== HTML/SGML
-
-(add-hook 'sgml-mode-hook 'zencoding-mode)
-
-;; ==== JS
-
-(setq-default js2-indent-on-enter-key t
-              js2-auto-indent-p t
-              js2-bounce-indent-p t
-              ;; Idle timeout before reparsing buffer
-              js2-idle-timer-delay 0.5
-              ;; load browser-specific functions
-              js2-include-browser-externs t
-              ;; Support Node.js
-              js2-include-node-externs t
-              js2-skip-preprocessor-directives t
-              ;; Disable error parsing in favor of Flycheck
-              js2-show-parse-errors nil
-              js2-strict-missing-semi-warning nil)
-
-;; ==== NXML
-
-(setq nxml-slash-auto-complete-flag t)
-
-(setq magic-mode-alist
-      (cons '("<?xml " . nxml-mode)
-            magic-mode-alist))
-
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . nxml-mode))
-(add-to-list 'auto-mode-alist '("\\.html\\'" . nxml-mode))
-
-(fset 'xml-mode 'nxml-mode)
-
-(add-hook 'nxml-mode-hook 'zencoding-mode)
-(add-hook 'nxml-mode-hook 'linum-mode)
-
-;; ==== PHP
-
-(define-auto-insert
-  '(php-mode . "Basic PHP header")
-  ['(nil "<?php")
-   autoinsert-yas-expand])
-
-;; indent multiline function parameter lists using a single
-;; indent, e.g.:
-;;
-;; function fun($param1,
-;;     $param2,
-;;     $param3)
-;; {
-;; ...
-;;
-(add-hook
- 'php-mode-hook
- (lambda ()
-   (progn
-     (c-set-offset 'arglist-cont-nonempty
-                   '(c-lineup-cascaded-calls +))
-     (c-set-offset 'arglist-cont
-                   '(c-lineup-cascaded-calls))
-     )))
-
-;; ==== Python
-
-
-;; ==== Ruby
-
-;; Recognize several Ruby/RoR/related tool files as Ruby fiels
-(add-to-list 'auto-mode-alist '("Guardfile" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Vagrantfile" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Cheffile" . ruby-mode))
-(add-to-list 'auto-mode-alist '(".*\\.cap" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
-
-;; required gems: pry, pry-doc, method_source
-(require 'robe)
-(add-hook 'ruby-mode-hook 'robe-mode)
-(add-hook 'ruby-mode-hook 'eldoc-mode)
-(add-hook 'ruby-mode-hook
-          (lambda ()
-            (setq ac-sources (cons 'ac-source-robe ac-sources))
-            ))
-
-;; (set-auto-complete-as-completion-at-point-function)
-
-(global-rinari-mode)
-
-
-;; ==== SCSS
-
-(add-hook 'scss-mode-hook
-          (lambda ()
-            (setq scss-compile-at-save nil)
-            (linum-mode)
-            ))
-
-
 ;; == Flyspell
 
 (require 'flyspell)
 
-(setq-default
-     ispell-program-name "aspell"
-     ispell-list-command "--list"
-     ispell-extra-args '("--sug-mode=ultra"))
-
-;; == Helm
-
-(require 'helm-projectile)
-
-
-;; == Projectile
-
-(projectile-global-mode)
-
-;; == MMM
-
-(require 'mmm-mode)
-(mmm-add-group
- 'fancy-html
- '((html-php-tagged
-    :submode php-mode
-    :face mmm-code-submode-face
-    :front "<[?]php"
-    :back "[?]>")
-   (html-css-embedded
-    :submode css-mode
-    :face mmm-declaration-submode-face
-    :front "\]*>"
-    :back "")
-   (html-css-attribute
-    :submode css-mode
-    :face mmm-declaration-submode-face
-    :front "\\bstyle=\\s-*\""
-    :back "\"")
-   (html-javascript-attribute
-    :submode javascript-generic-mode
-    :face mmm-code-submode-face
-    :front "\\bon\\w+=\\s-*\""
-    :back "\"")))
-
-(mmm-add-group
- 'html-css
- '((css-cdata
-    :submode css-mode
-    :face mmm-code-submode-face
-    :front "<style[^>]*>[ \t\n]*\\(//\\)?<!\\[CDATA\\[[ \t]*\n?"
-    :back "[ \t]*\\(//\\)?]]>[ \t\n]*</style>"
-    :insert ((?j js-tag nil @ "<style type=\"text/css\">"
-                 @ "\n" _ "\n" @ "</script>" @)))
-   (css
-    :submode css-mode
-    :face mmm-code-submode-face
-    :front "<style[^>]*>[ \t]*\n?"
-    :back "[ \t]*</style>"
-    :insert ((?j js-tag nil @ "<style type=\"text/css\">"
-                 @ "\n" _ "\n" @ "</style>" @)))
-   (css-inline
-    :submode css-mode
-    :face mmm-code-submode-face
-    :front "style=\""
-    :back "\"")))
-
-;; Enable support for mmm extensions
-(add-to-list 'mmm-mode-ext-classes-alist '(html-mode nil html-js))
-(add-to-list 'mmm-mode-ext-classes-alist '(html-mode nil embedded-css))
-(add-to-list 'mmm-mode-ext-classes-alist '(html-mode nil fancy-html))
-
-;; == Visual regexp steroids
-
-(define-key global-map (kbd "C-c r") 'vr/replace)
-(define-key global-map (kbd "C-c q") 'vr/query-replace)
-(define-key esc-map (kbd "C-M-r") 'vr/isearch-backward)
-(define-key esc-map (kbd "C-M-s") 'vr/isearch-forward)
-
-;; == Magit
-
-(setq-default magit-diff-refine-hunk t)
-(setq-default magit-status-buffer-switch-function 'switch-to-buffer)
-
-;; == Line numbers
-
-;; Line numbers are displayed in:
-
-;; haml
-(add-hook 'haml-mode-hook 'linum-mode)
-;; html
-(add-hook 'html-mode-hook 'linum-mode)
-;; js
-(add-hook 'js-mode-hook 'linum-mode)
-;; lisp
-(add-hook 'emacs-lisp-mode-hook 'linum-mode)
-;; php
-(add-hook 'php-mode-hook 'linum-mode)
-;; ruby
-(add-hook 'ruby-mode-hook 'linum-mode)
-;; shell
-(add-hook 'sh-mode-hook 'linum-mode)
-
-;; Line  numbers mode  customization:  numbers  are right-aligned  and
-;; width of the linum column is calculated automatically
-;;
-;; Note:  whitespace-mode highlights  spaces in  margin, so  there's a
-;; workaround for this: invisible leading zeros
-
-(eval-after-load 'linum
-  '(progn
-     ;; Make leading zeros invisible (fg = bg)
-     (defface linum-leading-zero
-       `((t :inherit 'linum
-            :foreground ,(face-attribute 'linum :background nil t)))
-       "Face for displaying leading zeroes for line numbers in display margin."
-       :group 'linum)
-
-     ;; Pad line number with zeros using :linum-leading-zero face
-     (defun linum-format-func (line)
-       (let ((w
-              (max
-               4
-               (1+
-                (length
-                 (number-to-string (count-lines (point-min) (point-max))))))))
-         (concat
-          ;; leading zeros
-          (propertize (make-string (- w (length (number-to-string line))) ?0)
-                      'face 'linum-leading-zero)
-          ;; formatted number
-          (propertize (number-to-string line) 'face 'linum))))
-
-     (setq linum-format 'linum-format-func)))
-
-;; == Page break lines
-
-(global-page-break-lines-mode)
-
+(setq-default ispell-program-name "aspell"
+              ispell-list-command "--list"
+              ispell-extra-args '("--sug-mode=ultra"))
 
 (require 'flymake)
-
-;; == Popwin
-
-;; Makes temporary buffers "popup" windows which can be closed by pressing C-g
-
-(require 'popwin)
-(popwin-mode 1)
-
-;; == Powerline
-
-(require 'powerline)
-(setq-default powerline-arrow-shape 'slant)
-(powerline-default-theme)
 
 (setq tramp-default-method "ssh")
 
@@ -615,19 +315,38 @@
 
 ;; Key prefixes:
 ;; C-x
-;;   tab
-;;   qwertyuiop[]\
+;;   tab - indent
+;;   q - macro query
+;;   w - free
+;;   e - kmacro-end-and-call-macro
+;;   r - register / rectangle commands
+;;   t - free
+;;   y - free
+;;   u - free (undo)
+;;   i - insert file
+;;   o - other window
+;;   p - bookmarks
+;;   [ - backward page
+;;   ] - forward page
+;;   \ - free
 ;;   a - helm
-;;   s
-;;   d
-;;   f
+;;   s - save
+;;   d - dired
+;;   f - free (set-fill-column, mostly unused)
 ;;   g - git-gutter+
-;;   h
-;;   j
-;;   k
-;;   l;'
-;;   zx
+;;   h - mark whole buffer
+;;   j - bookmark jump
+;;   k - kill buffer
+;;   l - free (number of lines)
+;;   ; - free (comment column)
+;;   ' - free (expand abbrev)
+;;   z - repeat
+;;   x - free
 ;;   c - free (helm command to be moved to a) use for jenkins (*C*I)?
 ;;   v - free (vc commands; I use magit)
 ;;   b - free (unused buffer nav) use for *b*undler?
-;;   nm,./
+;;   n - narrow
+;;   m - free (mail)
+;;   , - free
+;;   . - free? (set-fill-prefix)
+;;   / - free

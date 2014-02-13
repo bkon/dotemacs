@@ -24,3 +24,5 @@
 (define-key ac-menu-map "\C-p" 'ac-previous)
 
 (global-auto-complete-mode 1)
+
+(add-hook 'css-mode-hook 'ac-css-mode-setup)

@@ -9,8 +9,7 @@
 (global-set-key (kbd "C-x a T") 'helm-simple-call-tree)
 (global-set-key (kbd "C-x a o") 'helm-colors)
 (global-set-key (kbd "C-x a u") 'helm-ucs)
-(global-set-key (kbd "C-x a G") 'helm-do-grep)
-(global-set-key (kbd "C-x a G") 'helm-do-grep)
+(global-set-key (kbd "C-x a e") 'helm-do-grep)
 (global-set-key (kbd "C-x a h") 'helm-info-at-point)
 (global-set-key (kbd "C-x a H") 'helm-man-woman)
 (global-set-key (kbd "C-x a l") 'helm-locate)
@@ -22,3 +21,9 @@
 
 ;; Disable autoexpansion in find-files by default
 (setq helm-ff-auto-update-initial-value nil)
+
+(add-hook 'eshell-mode-hook
+          #'(lambda ()
+              (define-key eshell-mode-map
+                [remap eshell-pcomplete]
+                'helm-esh-pcomplete)))

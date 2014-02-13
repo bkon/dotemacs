@@ -3,4 +3,6 @@
 
 ;; requires: puppet-lint [gem]
 
-(add-hook puppet-mode-hook 'flymake-puppet-load)
+(eval-after-load "puppet-mode"
+  (lambda ()
+    (add-hook puppet-mode-hook 'flymake-puppet-load)))
