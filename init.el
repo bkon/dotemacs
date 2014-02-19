@@ -250,8 +250,16 @@
 
 ;; == Session management
 
-;; Save buffer position
+;; Save buffer position when file is closed and reopened within the same
+;; session; save-desktop does this between different sessions
+(require 'saveplace)
 (setq-default save-place t)
+(setq save-place-file
+      (expand-file-name
+       ".places"
+       (concat (file-name-as-directory user-emacs-directory)
+               "run")
+      ))
 
 
 ;; Show keystrokes being typed almost immediately
