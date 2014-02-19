@@ -1,3 +1,28 @@
+(setq inhibit-startup-message t)
+
+;; == Generic appearance
+
+;; Maximized
+(setq-default initial-frame-alist (quote ((fullscreen . maximized))))
+
+;; Turn off toolbar
+(tool-bar-mode -1)
+
+;; Turn off menu bar
+(menu-bar-mode -1)
+
+;; Hide scrollbars
+(scroll-bar-mode -1)
+
+;; Hide left fringe (vertical line along  the side of the frame), keep
+;; right fringe
+(fringe-mode '(0 . 10))
+
+;; set  left margin  width instead  of left  fringe, so  content won't
+;; stick to the left edge without line numbers; linum mode resets left
+;; margin
+(setq-default left-margin-width 1)
+
 (require 'cl)
 
 (defun load-config (package base-dir error-message)
@@ -37,6 +62,7 @@
 (package-initialize)
 
 (let ((packages '(
+                  zenburn-theme
                   anzu
                   ac-ispell
                   ac-js2
@@ -116,7 +142,6 @@
                   yaml-mode
                   yard-mode
                   yasnippet ;; todo
-                  zenburn-theme
                   zencoding-mode ;; todo
                   )))
 
@@ -228,28 +253,6 @@
 ;; Save buffer position
 (setq-default save-place t)
 
-;; == Generic appearance
-
-;; Maximized
-(setq-default initial-frame-alist (quote ((fullscreen . maximized))))
-
-;; Turn off toolbar
-(tool-bar-mode -1)
-
-;; Turn off menu bar
-(menu-bar-mode -1)
-
-;; Hide scrollbars
-(scroll-bar-mode -1)
-
-;; Hide left fringe (vertical line along  the side of the frame), keep
-;; right fringe
-(fringe-mode '(0 . 10))
-
-;; set  left margin  width instead  of left  fringe, so  content won't
-;; stick to the left edge without line numbers; linum mode resets left
-;; margin
-(setq-default left-margin-width 1)
 
 ;; Show keystrokes being typed almost immediately
 (setq echo-keystrokes 0.1)
