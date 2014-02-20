@@ -27,14 +27,14 @@
 
 (defun load-config (package base-dir error-message)
   (let ((filename (expand-file-name
-		   (format
-		    "%s/%s.el"
+                   (format
+                    "%s/%s.el"
                     base-dir
-		    (symbol-name package))
-		   (file-name-directory load-file-name))))
+                    (symbol-name package))
+                   (file-name-directory load-file-name))))
     (if
-	(file-exists-p filename)
-	(load filename)
+        (file-exists-p filename)
+        (load filename)
       (display-warning :warning (format error-message filename))
       )))
 
@@ -75,6 +75,7 @@
                   cursor-chg
                   dired+ ;; todo
                   diminish
+                  dired-details
                   dtrt-indent
                   expand-region
                   feature-mode
@@ -158,8 +159,10 @@
 (mapc #'load-major-mode-config
       '(
         css-mode
+        dired-mode
         emacs-lisp-mode
         eshell-mode
+        help-mode
         html-mode
         js-mode
         nxml-mode
@@ -177,6 +180,7 @@
         line-number-mode
         linum-mode
         recentf-mode
+        show-paren-mode
         size-indication-mode
         subword-mode
         which-func-mode
@@ -206,10 +210,67 @@
 ;; Hippie expand
 (global-set-key [C-tab] 'hippie-expand)
 
+(global-set-key (kbd "M-j") (lambda () (interactive) (join-line -1)))
+
 ;; Indent on pressing RET (instead of just newline)
 (define-key global-map (kbd "RET") 'newline-and-indent)
 
+(defun delete-current-buffer-file ()
+  "Removes file connected to current buffer and kills buffer."
+  (interactive)
+  (let ((filename (buffer-file-name))
+        (buffer (current-buffer))
+        (name (buffer-name)))
+    (if (not (and filename (file-exists-p filename)))
+        (ido-kill-buffer)
+      (when (yes-or-no-p "Are you sure you want to remove this file? ")
+        (delete-file filename)
+        (kill-buffer buffer)
+        (message "File '%s' successfully removed" filename)))))
+
+(global-set-key (kbd "C-x C-k") 'delete-current-buffer-file)
+
+(defun rename-current-buffer-file ()
+  "Renames current buffer and file it is visiting."
+  (interactive)
+  (let ((name (buffer-name))
+        (filename (buffer-file-name)))
+    (if (not (and filename (file-exists-p filename)))
+        (error "Buffer '%s' is not visiting a file!" name)
+      (let ((new-name (read-file-name "New name: " filename)))
+        (if (get-buffer new-name)
+            (error "A buffer named '%s' already exists!" new-name)
+          (rename-file filename new-name 1)
+          (rename-buffer new-name)
+          (set-visited-file-name new-name)
+          (set-buffer-modified-p nil)
+          (message "File '%s' successfully renamed to '%s'"
+                   name (file-name-nondirectory new-name)))))))
+
+(global-set-key (kbd "C-x C-r") 'rename-current-buffer-file)
+
+(defun open-line-below ()
+  (interactive)
+  (end-of-line)
+  (newline)
+  (indent-for-tab-command))
+
+(defun open-line-above ()
+  (interactive)
+  (beginning-of-line)
+  (newline)
+  (forward-line -1)
+  (indent-for-tab-command))
+
+;; @TODO
+;; (global-set-key (kbd "<C-O>") 'open-line-below)
+;; (global-set-key (kbd "<C-S-return>") 'open-line-above)
+
 ;; == Global behavior
+
+;; You can replace the active region  just by typing text, and you can
+;; delete the selected text just by hitting the Backspace key
+(delete-selection-mode 1)
 
 ;; Enable several advanced features which are disabled by default
 (put 'narrow-to-region 'disabled nil)
@@ -217,9 +278,6 @@
 
 ;; Default coding system
 (setq-default buffer-file-coding-system 'utf-8-unix)
-
-;; Delete trailing whitespace when file is saved
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Disable backups
 (setq backup-inhibited t)
@@ -300,6 +358,27 @@
 
 (setq tramp-default-method "ssh")
 
+(defun cleanup-buffer-safe ()
+  "Perform a bunch of safe operations on the whitespace content of a buffer.
+Does not indent buffer, because it is used for a before-save-hook, and that
+might be bad."
+  (interactive)
+  (untabify (point-min) (point-max))
+  (delete-trailing-whitespace)
+  (set-buffer-file-coding-system 'utf-8))
+
+;; Various superfluous white-space. Just say no.
+(add-hook 'before-save-hook 'cleanup-buffer-safe)
+
+(defun cleanup-buffer ()
+  "Perform a bunch of operations on the whitespace content of a buffer.
+Including indent-buffer, which should not be called automatically on save."
+  (interactive)
+  (cleanup-buffer-safe)
+  (indent-region (point-min) (point-max)))
+
+(global-set-key (kbd "C-c n") 'cleanup-buffer)
+
 ;; == Automated customizations
 
 ;; Custom  line  number face  (linum):  slightly  smaller size,  fixed
@@ -361,3 +440,11 @@
 ;;   , - free
 ;;   . - free? (set-fill-prefix)
 ;;   / - free
+
+;; Settings for currently logged in user
+(setq user-settings-dir
+      (concat user-emacs-directory "users/" user-login-name))
+
+;; Conclude init by setting up specifics for the current user
+(when (file-exists-p user-settings-dir)
+  (mapc 'load (directory-files user-settings-dir nil "^[^#].*el$")))
