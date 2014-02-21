@@ -13,3 +13,4 @@ eshell
 /projectile.cache
 /helm-adaptive-history
 /frame-restore-parameters
+/run/*
