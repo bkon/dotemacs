@@ -63,6 +63,7 @@
 
 (let ((packages '(
                   zenburn-theme
+                  ag
                   anzu
                   ac-ispell
                   ac-js2
