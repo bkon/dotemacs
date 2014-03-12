@@ -23,3 +23,11 @@
 
 ;; @FIXME
 ;; (define-key magit-status-mode-map (kbd "W") 'magit-toggle-whitespace))
+
+(defun bkon/magit/add-branch-to-commit-message (&rest discard)
+  "Add a current branch name to the default commit message"
+  (unless current-prefix-arg ;; ignore commit amends
+    (let ((tag (format "[%s] " (magit-get-current-branch))))
+      (goto-char (point-min))
+      (unless (search-forward tag nil t) (insert tag)))))
+(add-hook 'git-commit-mode-hook 'bkon/magit/add-branch-to-commit-message)
