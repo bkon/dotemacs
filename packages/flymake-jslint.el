@@ -4,3 +4,4 @@
 ;; requires: jslint [npm]
 
 (add-hook 'js-mode-hook 'flymake-jslint-load)
+(add-hook 'js2-mode-hook 'flymake-jslint-load)
