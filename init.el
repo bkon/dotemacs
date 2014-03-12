@@ -90,6 +90,7 @@
                   flymake-jslint
                   flymake-json
                   flymake-php
+                  flymake-phpcs
                   flymake-puppet
                   flymake-ruby
                   flymake-sass
