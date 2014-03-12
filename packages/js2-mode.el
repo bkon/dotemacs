@@ -17,3 +17,5 @@
               ;; Disable error parsing in favor of Flycheck
               js2-show-parse-errors nil
               js2-strict-missing-semi-warning nil)
+
+(add-hook 'js2-mode-hook 'linum-mode)
