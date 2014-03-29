@@ -21,3 +21,4 @@
 (setq-default coffee-tab-width 4)
 
 (add-hook 'coffee-mode-hook 'linum-mode)
+(add-hook 'coffee-mode-hook 'flymake-coffee-load)
