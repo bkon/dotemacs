@@ -139,6 +139,7 @@
                   smart-operator ;; todo
                   sql-indent ;; todo
                   syslog-mode ;; todo
+                  twig-mode
                   visual-regexp ;; todo
                   visual-regexp-steroids ;; todo
                   vline ;; todo
