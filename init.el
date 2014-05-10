@@ -284,6 +284,9 @@
 ;; Disable backups
 (setq backup-inhibited t)
 
+;; Disable lock files
+(setq create-lockfiles nil)
+
 ;; Disable auto save
 (setq auto-save-default nil)
 
