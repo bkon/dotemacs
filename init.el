@@ -8,6 +8,8 @@
        t
        "el$"))
 
+(setq mac-command-modifier 'meta)
+
 ;; == Generic appearance
 
 ;; Maximized
