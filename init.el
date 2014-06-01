@@ -83,7 +83,7 @@
                   bundler
                   butler
                   coffee-mode
-                  cursor-chg
+;;                  cursor-chg
                   dired+ ;; todo
                   diminish
                   dired-details
