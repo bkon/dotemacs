@@ -1,5 +1,13 @@
 (setq inhibit-startup-message t)
 
+(mapc #'(lambda (file) (load file))
+      (directory-files 
+       (expand-file-name 
+	"private"
+	(file-name-as-directory user-emacs-directory)) 
+       t
+       "el$"))
+
 ;; == Generic appearance
 
 ;; Maximized
