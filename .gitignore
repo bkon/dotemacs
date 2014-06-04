@@ -14,3 +14,5 @@ eshell
 /helm-adaptive-history
 /frame-restore-parameters
 /run/*
+/private/*
+!.gitkeep

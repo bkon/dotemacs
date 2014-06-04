@@ -1,5 +1,15 @@
 (setq inhibit-startup-message t)
 
+(mapc #'(lambda (file) (load file))
+      (directory-files
+       (expand-file-name
+        "private"
+        (file-name-as-directory user-emacs-directory))
+       t
+       "el$"))
+
+(setq mac-command-modifier 'meta)
+
 ;; == Generic appearance
 
 ;; Maximized
@@ -73,7 +83,7 @@
                   bundler
                   butler
                   coffee-mode
-                  cursor-chg
+;;                  cursor-chg
                   dired+ ;; todo
                   diminish
                   dired-details
@@ -139,6 +149,7 @@
                   smart-operator ;; todo
                   sql-indent ;; todo
                   syslog-mode ;; todo
+                  twig-mode
                   visual-regexp ;; todo
                   visual-regexp-steroids ;; todo
                   vline ;; todo
