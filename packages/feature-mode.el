@@ -8,3 +8,5 @@
 ;; C-c , f       Verify all features in project. (Available in feature and ruby files)
 ;; C-c , r       Repeat the last verification process.
 ;; C-c , g       Go to step-definition under point (requires ruby_parser gem >= 2.0.5)
+
+(add-hook 'feature-mode-hook 'linum-mode)
