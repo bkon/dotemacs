@@ -301,6 +301,9 @@
 ;; Disable backups
 (setq backup-inhibited t)
 
+;; Disable lock files
+(setq create-lockfiles nil)
+
 ;; Disable auto save
 (setq auto-save-default nil)
 
@@ -468,5 +471,6 @@ Including indent-buffer, which should not be called automatically on save."
 (when (file-exists-p user-settings-dir)
   (mapc 'load (directory-files user-settings-dir nil "^[^#].*el$")))
 (put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
 
 (load-directory "local")
