@@ -15,4 +15,5 @@ eshell
 /frame-restore-parameters
 /run/*
 /private/*
+/local/*
 !.gitkeep
