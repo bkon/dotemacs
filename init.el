@@ -1,12 +1,16 @@
 (setq inhibit-startup-message t)
 
-(mapc #'(lambda (file) (load file))
-      (directory-files 
-       (expand-file-name 
-	"private"
-	(file-name-as-directory user-emacs-directory)) 
-       t
-       "el$"))
+(defun load-directory (directory)
+  (mapc #'(lambda (file) (load file))
+        (directory-files
+         (expand-file-name
+          directory
+          (file-name-as-directory user-emacs-directory))
+         t
+         "el$"))
+  )
+
+(load-directory "private")
 
 (setq mac-command-modifier 'meta)
 
@@ -462,3 +466,5 @@ Including indent-buffer, which should not be called automatically on save."
 (when (file-exists-p user-settings-dir)
   (mapc 'load (directory-files user-settings-dir nil "^[^#].*el$")))
 (put 'upcase-region 'disabled nil)
+
+(load-directory "local")
