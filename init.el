@@ -121,6 +121,7 @@
                   graphviz-dot-mode
                   haml-mode
                   helm
+                  helm-ag-r
                   helm-css-scss
                   helm-flymake
                   helm-git-grep
