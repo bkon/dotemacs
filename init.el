@@ -141,6 +141,7 @@
                   popwin ;; todo
                   powerline ;; todo
                   projectile ;; todo
+                  projectile-rails
                   puppet-mode ;; todo
                   rainbow-delimiters
                   rainbow-mode
