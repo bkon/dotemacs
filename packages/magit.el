@@ -31,3 +31,8 @@
       (goto-char (point-min))
       (unless (search-forward tag nil t) (insert tag)))))
 (add-hook 'git-commit-mode-hook 'bkon/magit/add-branch-to-commit-message)
+
+(global-unset-key (kbd "C-x m"))
+(global-set-key (kbd "C-x m m") 'magit-status)
+(global-set-key (kbd "C-x m b") 'magit-blame-mode)
+(global-set-key (kbd "C-x m l") 'magit-file-log)

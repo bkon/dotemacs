@@ -459,7 +459,7 @@ Including indent-buffer, which should not be called automatically on save."
 ;;   v - free (vc commands; I use magit)
 ;;   b - free (unused buffer nav) use for *b*undler?
 ;;   n - narrow
-;;   m - free (mail)
+;;   m - magit
 ;;   , - free
 ;;   . - free? (set-fill-prefix)
 ;;   / - free
