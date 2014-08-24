@@ -14,3 +14,5 @@
 (add-hook 'ruby-mode-hook 'eldoc-mode)
 (add-hook 'ruby-mode-hook 'ac-ruby-mode-setup)
 (add-hook 'ruby-mode-hook 'linum-mode)
+
+(setq ruby-deep-indent-paren nil)
