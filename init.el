@@ -119,6 +119,7 @@
                   git-gutter-fringe+
                   git-messenger
                   graphviz-dot-mode
+                  grizzl
                   haml-mode
                   helm
                   helm-ag-r
@@ -146,8 +147,8 @@
                   rainbow-delimiters
                   rainbow-mode
                   revive
-                  rinari ;; todo
                   robe ;; todo
+                  rvm
                   rspec-mode ;; todo
                   sass-mode ;; todo
                   scss-mode ;; todo
@@ -162,6 +163,7 @@
                   vline ;; todo
                   yaml-mode
                   yard-mode
+                  yari
                   yasnippet ;; todo
                   zencoding-mode ;; todo
                   )))
