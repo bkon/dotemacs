@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: controller
+# key: controller
+# expand-env: ((yas/indent-line 'fixed))
+# --
+angular
+  .module("${1:<MODULE NAME>}")
+  .controller "${2:Foo}Controller", [
+    "$scope"
+    ($scope) ->
+      $0
+  ]

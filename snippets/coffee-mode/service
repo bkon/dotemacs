@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: service
+# key: service
+# expand-env: ((yas/indent-line 'fixed))
+# --
+angular
+  .module("${1:<MODULENAME>}")
+  .factory("${2:Foo}Service", [
+    "$q",
+    ($q) ->
+      null
+  ])

@@ -1,0 +1,19 @@
+# -*- mode: snippet -*-
+# name: directive
+# key: directive
+# expand-env: ((yas/indent-line 'fixed))
+# --
+angular
+  .module("${1:<MODULENAME>}")
+  .directive "${2:<DIRECTIVENAME>}", [() ->
+    restrict: "ACE"
+    templateUrl: "${3:<TEMPLATE>}"
+    transclude: true
+    scope:
+      key: "@"
+    controller: [() ->
+      {}
+    ]
+    link: (scope, element, attribute, controller) ->
+      null
+  ]
