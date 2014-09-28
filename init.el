@@ -404,6 +404,8 @@ Including indent-buffer, which should not be called automatically on save."
 
 (global-set-key (kbd "C-c n") 'cleanup-buffer)
 
+(setq ns-function-modifier 'control)
+
 ;; == Automated customizations
 
 ;; Custom  line  number face  (linum):  slightly  smaller size,  fixed
