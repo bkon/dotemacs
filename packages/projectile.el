@@ -5,5 +5,11 @@
 
 (global-set-key (kbd "C-x a a") 'ag-project)
 
+(defun projectile-magit ()
+  "Open magit for the current project"
+  (interactive)
+  (magit-status (projectile-project-root))
+  )
+
 (setq projectile-completion-system 'grizzl)
-(setq projectile-switch-project-action 'projectile-dired)
+(setq projectile-switch-project-action 'projectile-magit)
