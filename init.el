@@ -153,6 +153,7 @@
                   sass-mode ;; todo
                   scss-mode ;; todo
                   simple-call-tree ;; todo
+                  slim-mode
                   smart-mode-line ;; todo
                   smart-operator ;; todo
                   sql-indent ;; todo
