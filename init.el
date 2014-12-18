@@ -136,6 +136,8 @@
                   markdown-mode ;; todo
                   mmm-mode ;; todo
                   nginx-mode ;; todo
+                  perspective
+                  persp-projectile
                   page-break-lines
                   php-mode
                   popup
