@@ -18,7 +18,7 @@
 ;; requires coffee-script [npm]
 ;;
 ;; Default tab width for Coffeescript files
-(setq-default coffee-tab-width 4)
+(setq-default coffee-tab-width 2)
 
 (add-hook 'coffee-mode-hook 'linum-mode)
 (add-hook 'coffee-mode-hook 'flymake-coffee-load)
