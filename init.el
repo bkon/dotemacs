@@ -167,6 +167,7 @@
                   visual-regexp ;; todo
                   visual-regexp-steroids ;; todo
                   vline ;; todo
+                  workgroups2
                   yaml-mode
                   yard-mode
                   yari
@@ -445,7 +446,7 @@ Including indent-buffer, which should not be called automatically on save."
 ;; C-x
 ;;   tab - indent
 ;;   q - macro query
-;;   w - free
+;;   w - workspaces
 ;;   e - kmacro-end-and-call-macro
 ;;   r - register / rectangle commands
 ;;   t - free
