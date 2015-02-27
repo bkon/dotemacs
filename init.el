@@ -317,6 +317,11 @@
 ;; Midnight mode (cleans up old unused buffers)
 (setq midnight-mode t)
 
+;; winner-mode
+;; C-c <left> - undo changes in the window config)
+;; C-c <right> - redi changes in the window config)
+(winner-mode 1)
+
 ;; Scroll by 1 line instead of jumping around
 (setq scroll-margin 1
       scroll-conservatively 0
