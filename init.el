@@ -119,6 +119,7 @@
                   git-gutter+
                   git-gutter-fringe+
                   git-messenger
+                  git-timemachine
                   graphviz-dot-mode
                   grizzl
                   haml-mode
