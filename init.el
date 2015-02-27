@@ -129,6 +129,7 @@
                   helm-projectile
                   helm-swoop
                   highlight-indentation
+                  hungry-delete
                   js2-mode
                   js2-refactor ;; todo
                   json-mode ;; todo
