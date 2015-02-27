@@ -85,6 +85,7 @@
                   auto-complete-nxml
                   bookmark+ ;; todo
                   bundler
+                  buffer-move
                   butler
                   coffee-mode
 ;;                  cursor-chg
