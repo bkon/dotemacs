@@ -490,3 +490,5 @@ Including indent-buffer, which should not be called automatically on save."
 (put 'downcase-region 'disabled nil)
 
 (load-directory "local")
+
+(set-face-attribute 'default nil :font "Monaco-12")
