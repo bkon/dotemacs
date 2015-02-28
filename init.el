@@ -107,13 +107,11 @@
                   flymake-json
                   flymake-php
                   flymake-phpcs
-                  flymake-puppet
                   flymake-ruby
                   flymake-sass
                   flymake-shell
                   flymake-yaml
                   flyspell-lazy
-                  frame-restore
                   fuzzy
                   gist ;; todo
                   git-gutter+
@@ -148,7 +146,6 @@
                   powerline ;; todo
                   projectile ;; todo
                   projectile-rails
-                  puppet-mode ;; todo
                   rainbow-delimiters
                   rainbow-mode
                   revive
