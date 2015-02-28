@@ -18,7 +18,7 @@
 ;; == Generic appearance
 
 ;; Maximized
-(setq-default initial-frame-alist (quote ((fullscreen . maximized))))
+(toggle-frame-maximized)
 
 ;; Turn off toolbar
 (tool-bar-mode -1)
