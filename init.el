@@ -197,11 +197,11 @@
         sh-mode
         ))
 
+
 (mapc #'load-minor-mode-config
       '(
         auto-insert-mode
         column-number-mode
-        desktop-save-mode
         electric-pair-mode
         hl-line-mode
         line-number-mode
