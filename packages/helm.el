@@ -2,7 +2,7 @@
 ;; https://github.com/emacs-helm/helm
 
 (helm-mode)
-(helm-adaptative-mode)
+(helm-adaptive-mode)
 
 (global-set-key (kbd "C-x a b") 'helm-buffers-list)
 (global-set-key (kbd "C-x a r") 'helm-pp-bookmarks)
