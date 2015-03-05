@@ -17,9 +17,6 @@
 
 ;; == Generic appearance
 
-;; Maximized
-(toggle-frame-maximized)
-
 ;; Turn off toolbar
 (tool-bar-mode -1)
 
@@ -490,3 +487,6 @@ Including indent-buffer, which should not be called automatically on save."
 (put 'downcase-region 'disabled nil)
 
 (load-directory "local")
+
+;; Maximized
+(toggle-frame-maximized)
