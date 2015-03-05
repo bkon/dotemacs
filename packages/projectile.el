@@ -4,6 +4,7 @@
 (projectile-global-mode)
 
 (global-set-key (kbd "C-x a a") 'ag-project)
+(define-key projectile-command-map (kbd "s") 'helm-projectile-switch-project)
 
 (defun projectile-magit ()
   "Open magit for the current project"
