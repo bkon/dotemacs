@@ -149,6 +149,7 @@
                   projectile-rails
                   rainbow-delimiters
                   rainbow-mode
+                  rbenv
                   revive
                   robe ;; todo
                   rvm
