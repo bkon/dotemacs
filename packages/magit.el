@@ -3,7 +3,8 @@
 
 (setq-default magit-diff-refine-hunk t
               magit-set-upstream-on-push t
-              magit-status-buffer-switch-function 'switch-to-buffer)
+              magit-status-buffer-switch-function 'switch-to-buffer
+              magit-save-some-buffers nil)
 
 (defun magit-toggle-whitespace ()
   (interactive)

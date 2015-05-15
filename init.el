@@ -1,3 +1,5 @@
+;; gem install ruby_parser sass bundler cucumber haml pry pry-doc method_source
+
 (setq inhibit-startup-message t)
 (set-face-attribute 'default nil :font "Monaco-12")
 
@@ -90,6 +92,7 @@
                   dired+ ;; todo
                   diminish
                   dired-details
+                  dockerfile-mode ;; todo
                   dtrt-indent
                   exec-path-from-shell
                   expand-region
