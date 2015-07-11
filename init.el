@@ -134,6 +134,7 @@
                   js2-mode
                   js2-refactor ;; todo
                   json-mode ;; todo
+                  jsx-mode ;; todo
                   magit ;; todo
                   markdown-mode ;; todo
                   mmm-mode ;; todo
