@@ -19,23 +19,10 @@
 
 ;; == Generic appearance
 
-;; Turn off toolbar
 (tool-bar-mode -1)
-
-;; Turn off menu bar
 (menu-bar-mode -1)
-
-;; Hide scrollbars
 (scroll-bar-mode -1)
-
-;; Hide left fringe (vertical line along  the side of the frame), keep
-;; right fringe
-(fringe-mode '(0 . 10))
-
-;; set  left margin  width instead  of left  fringe, so  content won't
-;; stick to the left edge without line numbers; linum mode resets left
-;; margin
-(setq-default left-margin-width 1)
+(fringe-mode '(10 . 10))
 
 (require 'cl)
 
@@ -139,6 +126,7 @@
                   markdown-mode ;; todo
                   mmm-mode ;; todo
                   nginx-mode ;; todo
+                  paradox ;; todo
                   perspective
                   persp-projectile
                   page-break-lines
@@ -427,20 +415,14 @@ Including indent-buffer, which should not be called automatically on save."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(linum ((t (:height 0.8 :weight normal))))
- '(show-paren-match ((t (:background "OliveDrab4" :foreground "black" :weight bold))))
- '(show-paren-mismatch ((t (:background "firebrick" :foreground "black" :weight bold)))))
+ '(fringe ((t (:background "#3e3e3e" :foreground "#DCDCCC")))))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(bmkp-auto-light-when-jump (quote any-bookmark))
- '(bmkp-auto-light-when-set (quote any-bookmark))
- '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
- '(initial-frame-alist (quote ((fullscreen . maximized))))
- '(safe-local-variable-values (quote ((js-indent-level . 2)))))
+ '(paradox-github-token t))
 
 ;; Key prefixes:
 ;; C-x

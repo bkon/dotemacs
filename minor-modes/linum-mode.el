@@ -33,3 +33,5 @@
           (propertize (number-to-string line) 'face 'linum))))
 
      (setq linum-format 'linum-format-func)))
+
+(add-hook 'linum-mode `bkon/linum/fringe-and-margin)
