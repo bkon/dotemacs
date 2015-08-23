@@ -422,6 +422,7 @@ Including indent-buffer, which should not be called automatically on save."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(magit-push-always-verify nil)
  '(paradox-github-token t))
 
 ;; Key prefixes:
