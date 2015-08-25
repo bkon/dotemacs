@@ -32,3 +32,5 @@
 (global-set-key (kbd "C-x m m") 'magit-status)
 (global-set-key (kbd "C-x m b") 'magit-blame)
 (global-set-key (kbd "C-x m l") 'magit-file-log)
+
+(setq magit-branch-arguments (remove "--track" magit-branch-arguments))
