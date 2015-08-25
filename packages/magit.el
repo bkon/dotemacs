@@ -30,5 +30,5 @@
 
 (global-unset-key (kbd "C-x m"))
 (global-set-key (kbd "C-x m m") 'magit-status)
-(global-set-key (kbd "C-x m b") 'magit-blame-mode)
+(global-set-key (kbd "C-x m b") 'magit-blame)
 (global-set-key (kbd "C-x m l") 'magit-file-log)
