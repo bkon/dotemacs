@@ -427,6 +427,7 @@ Including indent-buffer, which should not be called automatically on save."
  '(magit-push-always-verify nil)
  '(magit-push-arguments (quote ("--set-upstream")))
  '(magit-rebase-arguments (quote ("--autosquash")))
+ '(magit-revert-buffers (quote silent))
  '(paradox-github-token t))
 
 ;; Key prefixes:
