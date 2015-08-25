@@ -86,19 +86,7 @@
                   feature-mode
                   fic-mode
                   fill-column-indicator
-                  flymake-coffee
-                  flymake-css
-                  flymake-cursor
-                  flymake-haml
-                  flymake-jshint
-                  flymake-jslint
-                  flymake-json
-                  flymake-php
-                  flymake-phpcs
-                  flymake-ruby
-                  flymake-sass
-                  flymake-shell
-                  flymake-yaml
+                  flycheck
                   flyspell-lazy
                   fuzzy
                   gist ;; todo
@@ -112,7 +100,6 @@
                   helm
                   helm-ag-r
                   helm-css-scss
-                  helm-flymake
                   helm-git-grep
                   helm-projectile
                   helm-swoop
@@ -378,8 +365,6 @@
 (setq-default ispell-program-name "aspell"
               ispell-list-command "--list"
               ispell-extra-args '("--sug-mode=ultra"))
-
-(require 'flymake)
 
 (setq tramp-default-method "ssh")
 
