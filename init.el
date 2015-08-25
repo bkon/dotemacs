@@ -409,6 +409,7 @@ Including indent-buffer, which should not be called automatically on save."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(magit-branch-arguments nil)
+ '(magit-diff-arguments (quote ("--ignore-space-change" "-M50%" "-C50%")))
  '(magit-pull-arguments (quote ("--rebase")))
  '(magit-push-always-verify nil)
  '(magit-push-arguments (quote ("--set-upstream")))
