@@ -100,6 +100,7 @@
                   helm
                   helm-ag-r
                   helm-css-scss
+                  helm-flycheck
                   helm-git-grep
                   helm-projectile
                   helm-swoop
