@@ -128,6 +128,7 @@
                   rainbow-mode
                   rbenv
                   revive
+                  restclient ;; todo
                   robe ;; todo
                   rvm
                   rspec-mode ;; todo
