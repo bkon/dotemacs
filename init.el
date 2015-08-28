@@ -410,6 +410,7 @@ Including indent-buffer, which should not be called automatically on save."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(js2-basic-offset 2)
  '(magit-branch-arguments nil)
  '(magit-diff-arguments (quote ("--ignore-space-change" "-M50%" "-C50%")))
  '(magit-pull-arguments (quote ("--rebase")))

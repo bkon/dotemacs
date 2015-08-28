@@ -2,10 +2,12 @@
 ;; https://github.com/mooz/js2-mode
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '(".eslintrc" . js2-mode))
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
 
-(setq-default js2-indent-on-enter-key t
-              js2-auto-indent-p t
+(setq-default js2-indent-on-enter-key nil
+              js2-auto-indent-p nil
               js2-bounce-indent-p t
               ;; Idle timeout before reparsing buffer
               js2-idle-timer-delay 0.5
@@ -19,3 +21,6 @@
               js2-strict-missing-semi-warning nil)
 
 (add-hook 'js2-mode-hook 'linum-mode)
+
+(eval-after-load 'js2-mode
+  '(define-key js2-mode-map (kbd "M-j") nil))
