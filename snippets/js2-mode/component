@@ -1,0 +1,18 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: component
+# key: component
+# --
+import React from "react";
+
+class Component extends React.Component {
+  render() {
+    $0
+  }
+}
+
+Component.displayName = "$1";
+Component.propTypes = {
+};
+
+export default Component;
+export { Component };

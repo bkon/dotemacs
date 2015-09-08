@@ -1,0 +1,14 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: actions
+# key: actions
+# --
+import alt from "dispatcher";
+
+export class Actions {
+  constructor() {
+    this.generateActions(
+    );
+  }
+}
+
+export default alt.createActions(Actions);

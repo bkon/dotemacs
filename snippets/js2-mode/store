@@ -1,0 +1,27 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: store
+# key: store
+# --
+import alt from "dispatcher";
+import rxStore from "utils/rx-store";
+import Actions from "actions/$1";
+
+class Store extends rxStore {
+  constructor() {
+    super();
+
+    this.outputs();
+    this.inputs();
+    this.intents();
+    this.shared();
+
+    this.bindActions(Actions);
+
+    $0
+  }
+}
+
+export default alt.createStore(
+  Store,
+  "$2"
+);

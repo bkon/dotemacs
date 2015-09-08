@@ -1,6 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: React component test
-# key: test-component
+# key: testc
 # expand-env: ((yas/indent-line 'fixed))
 # --
 /* global describe, beforeEach, it */
@@ -12,5 +12,14 @@ import { expect } from "chai";
 const TestUtils = React.addons.TestUtils;
 
 describe("$1", () => {
+  let subject;
+
+  beforeEach(() => {
+    let props = {};
+    subject = TestUtils.renderIntoDocument(
+      <Component {...props}/>
+    );
+  });
+
   $0
 });
