@@ -1,0 +1,14 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: itrx
+# key: itrx
+# --
+it("${1:does something}", (done) => {
+  subject$2.subscribe((v) => {
+    expect(v).to.equal($3);
+    done();
+  });
+
+  $0
+
+  terminate();
+});
