@@ -4,6 +4,7 @@
 # expand-env: ((yas/indent-line 'fixed))
 # --
 /* global describe, context, beforeEach, afterEach, before, after, it */
+/* global sinon */
 /* eslint-disable max-nested-callbacks */
 import React from "react/addons";
 import { Component } from "components/$1";

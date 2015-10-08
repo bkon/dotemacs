@@ -11,7 +11,11 @@ class Component extends React.Component {
 }
 
 Component.displayName = "$1";
+
 Component.propTypes = {
+};
+
+Component.contextTypes = {
 };
 
 export default Component;

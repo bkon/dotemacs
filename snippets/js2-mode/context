@@ -1,0 +1,11 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: context
+# key: context
+# --
+context("when $1", () => {
+  beforeEach(() => {
+    $2
+  });
+
+  $0
+});
