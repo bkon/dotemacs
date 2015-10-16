@@ -2,7 +2,7 @@
 # name: component
 # key: component
 # --
-import React from "react";
+import React, { PropTypes } from "react";
 
 class Component extends React.Component {
   render() {
@@ -13,6 +13,9 @@ class Component extends React.Component {
 Component.displayName = "$1";
 
 Component.propTypes = {
+};
+
+Component.defaultProps = {
 };
 
 Component.contextTypes = {
