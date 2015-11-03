@@ -19,3 +19,4 @@ eshell
 !.gitkeep
 /var/*
 /recentf
+/url/cache/*

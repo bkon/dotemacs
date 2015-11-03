@@ -3,17 +3,15 @@
 # key: store
 # --
 import alt from "dispatcher";
-import rxStore from "utils/rx-store";
+import rxStore from "utils/simple-rx-store";
 import Actions from "actions/$1";
 
 class Store extends rxStore {
   constructor() {
     super();
 
-    this.outputs();
     this.inputs();
     this.intents();
-    this.shared();
 
     this.bindActions(Actions);
 

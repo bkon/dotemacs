@@ -3,12 +3,7 @@
 # key: testc
 # expand-env: ((yas/indent-line 'fixed))
 # --
-/* global describe, context, beforeEach, afterEach, before, after, it */
-/* global sinon */
-/* eslint-disable max-nested-callbacks */
-import React from "react/addons";
 import { Component } from "components/$1";
-import { expect } from "chai";
 
 import flattenTree from "utils/flatten-tree";
 import renderComponent from "utils/render-component/shallow";
@@ -19,7 +14,7 @@ describe("$1", () => {
   let subject;
   let props = {};
 
-  beforeEach(() => { subject = render(props); });
+  beforeEach(() => { subject = () => render(props); });
 
   $0
 });
