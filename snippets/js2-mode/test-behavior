@@ -1,0 +1,30 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: React observable test
+# key: testo
+# expand-env: ((yas/indent-line 'fixed))
+# --
+import { Observable as O } from "utils/rx/extensions";
+import { TestScheduler, ReactiveTest } from "rx";
+
+import subject from "stores/behaviors/$1";
+
+const { onNext, onError, onCompleted } = ReactiveTest;
+
+describe("stores/behaviors/$1", () => {
+  it("$2", () => {
+    let scheduler = new TestScheduler();
+
+    let o$3 = scheduler.createColdObservable(
+    );
+
+    let res = scheduler.startScheduler(
+      () => subject(
+        o$3
+      )
+    );
+
+    expect(res.messages).to.deep.equal([
+      $0
+    ]);
+  });
+});
