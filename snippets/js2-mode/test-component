@@ -9,8 +9,6 @@ import { shallow } from "enzyme";
 
 import { Component } from "components/$1";
 
-import waitFor from "utils/wait-for";
-
 describe("$1", () => {
   let subject;
   let props;
