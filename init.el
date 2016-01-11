@@ -88,6 +88,7 @@
                   fic-mode
                   fill-column-indicator
                   flycheck
+                  flycheck-flow
                   flyspell-lazy
                   fuzzy
                   gist ;; todo
