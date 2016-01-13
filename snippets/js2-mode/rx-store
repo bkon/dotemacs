@@ -3,18 +3,23 @@
 # key: store
 # --
 import alt from "dispatcher";
+import rxStore from "utils/simple-rx-store";
 import Actions from "actions/$1";
 
-class Store {
+class Store extends rxStore {
   constructor() {
     super();
 
+    this.inputs();
+    this.intents();
+
     this.bindActions(Actions);
-    this.state = {};
 
     $0
   }
 }
 
-export { Store };
-export default alt.createStore(Store, "$2");
+export default alt.createStore(
+  Store,
+  "$2"
+);
