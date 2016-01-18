@@ -6,13 +6,19 @@
 import R from "ramda";
 import React from "react";
 import { shallow } from "enzyme";
+import "rewire" from "utils/rewire";
 
-import { Component } from "components/$1";
+import { Component, __RewireAPI__ } from "components/$1";
+
+import chaiEnzyme from "chai-enzyme";
+chai.use(chaiEnzyme());
 
 describe("$1", () => {
   let subject;
   let props;
   let reactContext;
+  let rewireSandbox;
+
 
   beforeEach(() => {
     props = {};
@@ -22,10 +28,17 @@ describe("$1", () => {
       <Component { ...props }/>,
       { context: reactContext }
     ));
+
+    rewireSadnbox = rewire(__RewireAPI__);
+    rewireSandbox.stub({});
+  });
+
+  afterEach(() => {
+    rewireSandbox.restore();
   });
 
   it("renders without errors", () => {
-    expect(subject()).to.have.length(1);
+    expect(subject()).to.be.present();
   });
 
   $0
