@@ -2,6 +2,7 @@
 # name: store
 # key: store
 # --
+import R from "ramda";
 import alt from "dispatcher";
 import Actions from "actions/$1";
 
