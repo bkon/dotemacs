@@ -1,7 +1,9 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: store
-# key: store
+# name: rx-store
+# key: rx-store
 # --
+import R from "ramda";
+import { Observable as O } from "rx";
 import alt from "dispatcher";
 import rxStore from "utils/simple-rx-store";
 import Actions from "actions/$1";
@@ -14,12 +16,17 @@ class Store extends rxStore {
     this.intents();
 
     this.bindActions(Actions);
+    this.state = {};
 
     $0
   }
+
+  rxState() {
+    return O.composeLatest(
+      Array.of
+    ).map(R.zipObj([]))
+  }
 }
 
-export default alt.createStore(
-  Store,
-  "$2"
-);
+export { Store };
+export default alt.createStore(Store, "$2");
