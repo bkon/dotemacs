@@ -5,3 +5,4 @@
 
 (setq js-indent-level 2)
 (add-to-list 'auto-mode-alist '(".jshintrc" . json-mode))
+(add-to-list 'auto-mode-alist '(".babelrc" . json-mode))
