@@ -475,4 +475,4 @@ Including indent-buffer, which should not be called automatically on save."
 (load-directory "local")
 
 ;; Maximized
-(toggle-frame-maximized)
+;; (toggle-frame-maximized)
