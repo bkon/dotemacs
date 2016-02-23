@@ -1,0 +1,41 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: React store test
+# key: tests
+# expand-env: ((yas/indent-line 'fixed))
+# --
+import R from "ramda";
+import { Observable as O } from "utils/rx/extensions";
+
+import alt from "dispatcher";
+import AltTestingUtils from "alt/utils/AltTestingUtils";
+import mockSetState from "utils/test/mock-set-state";
+import rewire from "utils/rewire";
+
+import { Store, __RewireAPI__ } from "stores/$1";
+
+// Place rewire stub declarations here here
+
+describe("$1", () => {
+  let store;
+  let subject;
+  let rewireSandbox;
+
+  beforeEach(() => {
+    rewireSandbox = rewire(__RewireAPI__);
+
+    // Place rewire stub definitions here
+
+    subject = R.memoize(() => {
+      store = mockSetState(AltTestingUtils.makeStoreTestable(alt, Store));
+
+      rewireSandbox.stub({
+      });
+
+      return store;
+    });
+  });
+
+  afterEach(() => {
+    rewireSandbox.restore();
+  });
+});
