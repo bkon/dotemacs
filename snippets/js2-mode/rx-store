@@ -1,11 +1,12 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: rx-store
-# key: rx-store
+# key: rxstore
 # --
 import R from "ramda";
 import { Observable as O } from "rx";
 import alt from "dispatcher";
 import rxStore from "utils/simple-rx-store";
+import selfBootstrap from "utils/bootstrap";
 import Actions from "actions/$1";
 
 class Store extends rxStore {
@@ -16,7 +17,10 @@ class Store extends rxStore {
     this.intents();
 
     this.bindActions(Actions);
-    this.state = {};
+    this.state = selfBootstrap(
+      "$2",
+      {}
+    );
 
     $0
   }
