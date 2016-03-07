@@ -3,7 +3,9 @@
 # key: component
 # --
 import React, { PropTypes } from "react";
+import pure from "pure-render-decorator";
 
+@pure
 class Component extends React.Component {
   render() {
     $0
