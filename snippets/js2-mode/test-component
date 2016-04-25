@@ -14,27 +14,36 @@ import { Component, __RewireAPI__ } from "components/$1";
 import chaiEnzyme from "chai-enzyme";
 chai.use(chaiEnzyme());
 
+let subject;
+let rewireSandbox;
+
+function doRewire() {
+  rewireSandbox.stub({});
+}
+
+beforeEach(() => {
+  rewireSandbox = rewire(__RewireAPI__);
+});
+
+afterEach(() => {
+  rewireSandbox.restore();
+});
+
 describe("$1", () => {
-  let subject;
   let props;
   let reactContext;
-  let rewireSandbox;
 
   beforeEach(() => {
     props = {};
     reactContext = {};
 
-    subject = R.memoize(() => shallow(
-      <Component { ...props }/>,
-      { context: reactContext }
-    ));
-
-    rewireSandbox = rewire(__RewireAPI__);
-    rewireSandbox.stub({});
-  });
-
-  afterEach(() => {
-    rewireSandbox.restore();
+    subject = R.memoize(() => {
+      doRewire();
+      return shallow(
+        <Component { ...props }/>,
+        { context: reactContext }
+      );
+    });
   });
 
   it("renders without errors", () => {
