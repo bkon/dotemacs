@@ -4,4 +4,4 @@
 (setq-default fic-highlighted-words '("FIXME" "TODO" "BUG" "KLUDGE" "TBD"))
 
 (require 'fic-mode)
-(add-hook 'prog-mode-hook 'turn-on-fic-mode)
+(add-hook 'prog-mode-hook 'fic-mode)
