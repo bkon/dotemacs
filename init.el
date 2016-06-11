@@ -215,6 +215,10 @@
 ;; Move between windows using Shift + Arrows
 (windmove-default-keybindings)
 
+;; Unbind sleep button
+(global-unset-key [(control z)])
+(global-unset-key [(control x)(control z)])
+
 ;; Hippie expand
 (global-set-key [C-tab] 'hippie-expand)
 
