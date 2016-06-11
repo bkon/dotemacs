@@ -19,6 +19,8 @@
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 
+(define-key helm-find-files-map (kbd "C-.") 'helm-find-files-up-one-level)
+
 ;; Disable autoexpansion in find-files by default
 (setq helm-ff-auto-update-initial-value nil)
 
