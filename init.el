@@ -227,6 +227,8 @@
 ;; Indent on pressing RET (instead of just newline)
 (define-key global-map (kbd "RET") 'newline-and-indent)
 
+(global-set-key [(control x)(control f)] 'helm-find-files)
+
 (defun delete-current-buffer-file ()
   "Removes file connected to current buffer and kills buffer."
   (interactive)
