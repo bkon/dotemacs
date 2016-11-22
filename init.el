@@ -302,6 +302,9 @@
 ;; Disable auto save
 (setq auto-save-default nil)
 
+;; Add final newline
+(setq require-final-newline t)
+
 ;; Midnight mode (cleans up old unused buffers)
 (setq midnight-mode t)
 
