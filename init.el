@@ -125,6 +125,7 @@
                   popwin ;; todo
                   powerline ;; todo
                   projectile ;; todo
+                  projectile-direnv ;; todo
                   projectile-rails
                   rainbow-delimiters
                   rainbow-mode
