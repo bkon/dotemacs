@@ -1,0 +1,30 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: React component test
+# key: simpletestc
+# expand-env: ((yas/indent-line 'fixed))
+# --
+import R from "ramda";
+import React from "react";
+import { shallow } from "enzyme";
+
+import { Component } from "components/$1";
+
+chai.use(require("chai-enzyme")());
+
+let subject;
+
+describe("$1", () => {
+  let props;
+
+  beforeEach(() => {
+    props = {};
+
+    subject = R.memoize(() => {
+      return shallow(<Component { ...props }/>);
+    });
+  });
+
+  it("renders without errors", () => {
+    expect(subject()).to.be.present();
+  });
+});
