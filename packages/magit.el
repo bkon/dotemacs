@@ -10,10 +10,8 @@
   "Extract current issue number from the branch name"
   (interactive)
   (if (magit-get-current-branch)
-      (if (string-match "^[0-9]+" (magit-get-current-branch))
+      (if (string-match "[0-9]\\{9\\}" (magit-get-current-branch))
           (match-string 0 (magit-get-current-branch))
-        (if (string-match "[0-9]+$" (magit-get-current-branch))
-            (match-string 0 (magit-get-current-branch)))
         )))
 
 (defun bkon/magit/add-branch-to-commit-message (&rest discard)
