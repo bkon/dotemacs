@@ -76,6 +76,7 @@
                   buffer-move
                   butler
                   coffee-mode
+                  company ;; todo
 ;;                  cursor-chg
                   dired+ ;; todo
                   diminish
@@ -143,7 +144,9 @@
                   smart-operator ;; todo
                   sql-indent ;; todo
                   syslog-mode ;; todo
+                  tide
                   twig-mode
+                  typescript-mode ;; todo
                   visual-regexp ;; todo
                   visual-regexp-steroids ;; todo
                   vline ;; todo
@@ -387,7 +390,6 @@
 Does not indent buffer, because it is used for a before-save-hook, and that
 might be bad."
   (interactive)
-;;  (untabify (point-min) (point-max))
   (delete-trailing-whitespace)
   (set-buffer-file-coding-system 'utf-8))
 
@@ -431,7 +433,7 @@ Including indent-buffer, which should not be called automatically on save."
  '(magit-push-always-verify nil)
  '(magit-push-arguments (quote ("--set-upstream")))
  '(magit-rebase-arguments (quote ("--autosquash")))
- '(magit-revert-buffers (quote silent))
+ '(magit-revert-buffers (quote silent) t)
  '(paradox-github-token t))
 
 ;; Key prefixes:
@@ -486,3 +488,5 @@ Including indent-buffer, which should not be called automatically on save."
 
 ;; Maximized
 ;; (toggle-frame-maximized)
+
+(require 'projectile-direnv)

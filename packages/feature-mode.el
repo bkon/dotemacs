@@ -10,3 +10,5 @@
 ;; C-c , g       Go to step-definition under point (requires ruby_parser gem >= 2.0.5)
 
 (add-hook 'feature-mode-hook 'linum-mode)
+(setq feature-cucumber-command
+      "bundle exec rake cucumber CUCUMBER_OPTS=\"{options}\" FEATURE=\"{feature}\"")
