@@ -286,6 +286,9 @@
 
 ;; == Global behavior
 
+(setq visible-bell t)
+(setq ring-bell-function 'ignore)
+
 ;; You can replace the active region  just by typing text, and you can
 ;; delete the selected text just by hitting the Backspace key
 (delete-selection-mode 1)
