@@ -3,17 +3,14 @@
 # key: fcomponent
 # expand-env: ((yas/indent-line 'fixed))
 # --
-import React, { PropTypes } from "react";
-import { compose, setPropTypes, onlyUpdateForKeys } from "recompose";
+import React from "react";
+import { compose } from "recompose";
 
-function $1({$2}) {
-  return (
-    <div>$0</div>
-  );
-}
+const $1 = ({$2}) => (
+  <div>$0</div>
+);
 
 export default compose(
-  onlyUpdateForKeys([]),
-  setPropTypes({})
 )($1);
+
 export { $1 as Component };
