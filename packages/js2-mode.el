@@ -7,6 +7,8 @@
 (add-to-list 'auto-mode-alist '(".babelrc" . js2-mode))
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
 
+(add-hook 'js2-mode-hook 'prettier-js-mode)
+
 (setq-default js2-indent-on-enter-key nil
               js2-auto-indent-p nil
               js2-bounce-indent-p t

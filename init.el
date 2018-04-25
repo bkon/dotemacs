@@ -125,6 +125,7 @@
                   popup
                   popwin ;; todo
                   powerline ;; todo
+                  prettier-js ;; todo
                   projectile ;; todo
                   projectile-direnv ;; todo
                   projectile-rails

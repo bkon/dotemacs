@@ -5,3 +5,4 @@
 (setq typescript-auto-indent-flag nil)
 (add-to-list 'auto-mode-alist '(".tsx" . typescript-mode))
 (add-hook 'typescript-mode-hook 'linum-mode)
+(add-hook 'typescript-mode-hook 'prettier-js-mode)
