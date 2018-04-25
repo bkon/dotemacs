@@ -98,6 +98,7 @@
                   git-timemachine
                   graphviz-dot-mode
                   grizzl
+                  groovy-mode
                   haml-mode
                   helm
                   helm-ag-r
