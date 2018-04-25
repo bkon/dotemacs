@@ -494,3 +494,4 @@ Including indent-buffer, which should not be called automatically on save."
 ;; (toggle-frame-maximized)
 
 (require 'projectile-direnv)
+(put 'dired-find-alternate-file 'disabled nil)
