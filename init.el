@@ -82,7 +82,6 @@
                   diminish
                   dired-details
                   dockerfile-mode ;; todo
-                  dtrt-indent
                   exec-path-from-shell
                   expand-region
                   feature-mode
