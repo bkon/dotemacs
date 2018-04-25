@@ -69,6 +69,7 @@
                   anzu
                   ac-ispell
                   ac-js2
+                  add-node-modules-path
                   auto-complete
                   auto-complete-nxml
                   bookmark+ ;; todo
