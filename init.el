@@ -148,6 +148,7 @@
                   tide
                   twig-mode
                   typescript-mode ;; todo
+                  virtualenvwrapper
                   visual-regexp ;; todo
                   visual-regexp-steroids ;; todo
                   vline ;; todo
