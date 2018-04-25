@@ -1,0 +1,17 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: test
+# key: test
+# --
+import { shallow } from "enzyme";
+import * as React from "react";
+
+import { ${1:`(file-name-nondirectory (file-name-sans-extension (file-name-sans-extension (buffer-file-name))))`}, IProps } from "../../src/components/$1";
+
+describe("COMPONENT: $1", () => {
+  const Component = $1;
+  const props: IProps = {};
+
+  it("renders consistently", () => {
+    expect(shallow(<Component {...props}/>)).toMatchSnapshot();
+  });
+});

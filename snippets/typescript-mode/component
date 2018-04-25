@@ -1,0 +1,12 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: component
+# key: component
+# --
+import * as React from "react";
+
+// tslint:disable-next-line
+interface IProps {}
+
+const ${1:`(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`}: React.StatelessComponent<IProps> = (props) => <div>$1</div>;
+
+export { $1, IProps };
